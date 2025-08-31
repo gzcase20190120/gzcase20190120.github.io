@@ -13,11 +13,10 @@ var _hmt = _hmt || [];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-        <link rel="icon" type="image/png" href="images/GPG.webp">
+        <link rel="icon" type="image/png" href="images\A5.webp">
     
     <title>王贵平主页</title>
     <style>
-        /* 基础 */
         body {
             margin: 0;
             overflow: hidden;
@@ -28,7 +27,6 @@ var _hmt = _hmt || [];
 
         canvas { display: block; }
 
-        /* 汉堡按钮 */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -51,7 +49,6 @@ var _hmt = _hmt || [];
             transition: 0.3s;
         }
 
-        /* 头部 */
         .header {
             position: fixed;
             top: 0; left: 0; right: 0;
@@ -63,13 +60,12 @@ var _hmt = _hmt || [];
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 16px; /* 缩减左右内边距，减少空白 */
+            padding: 0 16px; 
         }
     .header-left { display: flex; align-items: center; gap: 12px; }
 
         .logo { font-size: 24px; font-weight: bold; color: #00ff88; text-shadow: 0 0 10px rgba(0,255,136,0.5); }
 
-        /* 胶囊按钮样式 */
         .capsule-btn {
             display: inline-block; padding: 0.35em 1.2em; border-radius: 999px;
             background: linear-gradient(90deg,#1976d2 0%,#2196f3 100%);
@@ -79,9 +75,8 @@ var _hmt = _hmt || [];
         }
         .capsule-btn:hover,.capsule-btn:focus{ background:linear-gradient(90deg,#1565c0 0%,#1976d2 100%); box-shadow:0 4px 12px rgba(25,118,210,0.18); transform:translateY(-2px) scale(1.04); }
 
-        /* 导航（默认桌面显示） */
         .nav-menu {
-            display:flex; gap:18px; list-style:none; margin:0; padding:0; justify-content:center; width:auto; /* 不占满整行，避免把左侧元素推开 */
+            display:flex; gap:18px; list-style:none; margin:0; padding:0; justify-content:center; width:auto; 
         }
         .nav-menu li { flex:0 0 auto; }
         .nav-menu li a { color:white; text-decoration:none; font-size:16px; transition:color .3s; position:relative; }
@@ -89,12 +84,10 @@ var _hmt = _hmt || [];
         .nav-menu li a::after{ content:''; position:absolute; bottom:-5px; left:0; width:0; height:2px; background:#00ff88; transition:width .3s; }
         .nav-menu li a:hover::after{ width:100%; }
 
-        /* 滚动条样式 */
         .nav-menu::-webkit-scrollbar{ height:6px; }
         .nav-menu::-webkit-scrollbar-thumb{ background:#1976d2; border-radius:3px; }
         .nav-menu::-webkit-scrollbar-track{ background:#eee; }
 
-        /* 其它元素 */
         .status-indicator{ display:flex; align-items:center; gap:8px; color:#00ff88; font-size:14px; }
         .status-dot{ width:8px; height:8px; background:#00ff88; border-radius:50%; animation:pulse 2s infinite; }
         @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:0.5;} }
@@ -132,19 +125,15 @@ var _hmt = _hmt || [];
     .avatar-name{ font-size:22px; font-weight:bold; color:#00ff88; margin-right:12px; letter-spacing:2px; text-shadow:0 0 8px #00ff88,0 0 2px #fff; }
     .title-badge{ height:32px; width:auto; margin-right:8px; vertical-align:middle; display:inline-block; max-width:60%; overflow:visible; }
 
-        /* 将时钟固定到主内容区右上（在 header 下方），不占用 header 布局，避免换行 */
         .header-right{ position:fixed; right:12px; top:calc(80px + 12px); display:flex; align-items:center; gap:12px; z-index:2500; pointer-events:auto; }
         .dynamic-clock{ color:#bfffd6; font-weight:600; font-size:14px; padding:6px 10px; border-radius:999px; background:rgba(0,0,0,0.18); box-shadow:0 2px 8px rgba(0,255,136,0.06); text-shadow:0 0 6px rgba(0,255,136,0.15); white-space:nowrap; }
 
-        /* 窄屏时隐藏悬浮时钟，避免遮挡汉堡或导航 */
         @media (max-width:900px){
             .header-right{ display:none; }
         }
 
-        /* 移动端：隐藏导航，显示汉堡 */
         @media (max-width:900px){
             .hamburger{ display:flex; }
-            /* 固定定位浮层，避免被 footer 覆盖；保留底部内边距以便最后一项可见 */
             .nav-menu{
                 display:none !important;
                 flex-direction:column;
@@ -154,8 +143,8 @@ var _hmt = _hmt || [];
                 left:50%;
                 transform:translateX(-50%);
                 width:86%;
-                max-height:calc(100vh - 170px); /* 留出 header+footer 空间 */
-                padding:12px 16px 120px 16px; /* 底部留出更多空间，避免被 footer 遮挡 */
+                max-height:calc(100vh - 170px);
+                padding:12px 16px 120px 16px; 
                 background:rgba(26,35,126,0.94);
                 backdrop-filter:blur(6px);
                 border-radius:12px;
@@ -174,15 +163,12 @@ var _hmt = _hmt || [];
             .nav-menu li{ margin:10px 0; text-align:center; }
             .nav-menu::-webkit-scrollbar{ height:8px; }
             .nav-menu::-webkit-scrollbar-thumb{ background:#1976d2; border-radius:4px; }
-            /* 保持左侧 logo 不被推到右侧，汉堡按钮靠右 */
             .header-left{ flex:1; min-width:0; justify-content:flex-start; align-items:center; }
             .hamburger{ margin-left:auto; }
-            /* 窄屏时缩小头像与徽章，避免被裁切 */
             .avatar-img{ width:40px; height:40px; }
             .title-badge{ height:26px; max-width:55%; }
         }
     </style>
-    
     <style>
         @media (max-width:900px){
             .nav-menu{ display:none !important; }
@@ -193,8 +179,7 @@ var _hmt = _hmt || [];
 <header class="header">
     <div class="header-left">
         
-            <img src="images/GPG.webp" alt="头像" class="avatar-img">
-        <img src="images/title-badge.svg" alt="（2019）黔0103刑初821号揭秘" class="title-badge">
+            <img src="images\A5.webp" alt="头像" class="avatar-img">
             <button class="hamburger" id="hamburgerBtn" aria-label="菜单">
                 <span></span>
                 <span></span>
@@ -214,14 +199,11 @@ var _hmt = _hmt || [];
     document.addEventListener('DOMContentLoaded', function() {
         var hamburger = document.getElementById('hamburgerBtn');
         var navMenu = document.getElementById('navMenu');
-        // 占位，用于还原 navMenu 的原始位置
         var placeholder = document.createElement('div');
         placeholder.style.display = 'none';
         navMenu.parentNode.insertBefore(placeholder, navMenu.nextSibling);
 
-      // 强制初始收起菜单，防止手机端默认展开
       navMenu.classList.remove('show');
-      // 调试：打印当前菜单项数量与文本，便于比较手机/桌面差异
       try { console.info('navMenu items count:', navMenu.querySelectorAll('li').length);
           console.info(Array.from(navMenu.querySelectorAll('li a')).map(a=>a.textContent.trim())); } catch(e) {}
         if (window.innerWidth <= 900) {
@@ -232,20 +214,15 @@ var _hmt = _hmt || [];
 
         hamburger.addEventListener('click', function() {
             var isShown = navMenu.classList.toggle('show');
-            // 清除内联 display，让 CSS 控制显示
             navMenu.style.display = '';
 
             if (isShown) {
-                // 将菜单移动到 body，避免受父容器 stacking context 限制
                 if (!movedToBody) {
                     document.body.appendChild(navMenu);
                     movedToBody = true;
                 }
-                // 让菜单内部支持原生滚动惯性，避免禁用 body overflow（提高灵敏度）
-                // 确保菜单滚到顶部以显示首项
                 setTimeout(function() { navMenu.scrollTop = 0; }, 50);
             } else {
-                // 收起时把菜单放回占位位置
                 if (movedToBody) {
                     placeholder.parentNode.insertBefore(navMenu, placeholder.nextSibling);
                     movedToBody = false;
@@ -257,10 +234,6 @@ var _hmt = _hmt || [];
 </header>
 
 <canvas id="sphereCanvas"></canvas>
-
-<div id="floating-svg-container" style="position:fixed;top:50%;left:5vw;transform:translateY(-50%);z-index:100;pointer-events:none;width:320px;height:320px;">
-    <img src="oppoA5sorceproblems.svg" alt="oppoA5来源问题" id="floating-svg" style="width:100%;height:100%;opacity:0.92;filter:drop-shadow(0 2px 16px #222);">
-</div>
 
 <footer class="footer">
     <div class="footer-center">
@@ -280,7 +253,7 @@ var _hmt = _hmt || [];
     
     resizeCanvas();
 
-    const numbers = "oppoA5来源不明";
+    const numbers = "王贵平设计";
     const points = [];
     const trails = [];
     const radius = Math.min(canvas.width, canvas.height) * 0.4;
@@ -465,7 +438,6 @@ var _hmt = _hmt || [];
         radius = Math.min(canvas.width, canvas.height) * 0.4;
     });
 </script>
-    
 <script>
     (function(){
         function pad(n){ return n<10?('0'+n):n; }
@@ -479,16 +451,15 @@ var _hmt = _hmt || [];
         function update(){ el.textContent = formatClock(new Date()); }
         update();
         var timer = setInterval(update,1000);
-        // 暴露控制接口（可选）
         window.dynamicClock = { stop: function(){ clearInterval(timer); }, start: function(){ timer = setInterval(update,1000); } };
     })();
 </script>
 <script>
 (function(){
     var svgBox = document.getElementById('floating-svg-container');
-    var baseLeft = 5; // vw
-    var amplitude = 3; // vw
-    var speed = 0.7; // 动画速度
+    var baseLeft = 5; 
+    var amplitude = 3; 
+    var speed = 0.7; 
     function animate(){
         var t = Date.now() * 0.001 * speed;
         var offset = Math.sin(t) * amplitude;
