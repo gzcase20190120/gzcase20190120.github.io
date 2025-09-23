@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?8ce9bfe8990697d49b53155401e40598";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <link rel="icon" type="image/png" href="images\A5.png">
+    
+    <title>法规专栏</title>
+    <style>
+        body {
+            margin: 0;
+            overflow-y: auto;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            cursor: default;
+            font-family: 'Arial', sans-serif;
+            -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+        }
+
+        canvas { display: block; }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 3000;
+        }
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 4px;
+            margin: 4px 0;
+            background: #2196f3;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        .header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 80px;
+            background: linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(26,26,46,0.9) 50%, rgba(22,33,62,0.9) 100%);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0,255,136,0.3);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px; 
+        }
+    .header-left { display: flex; align-items: center; gap: 12px; }
+
+        .logo { font-size: 24px; font-weight: bold; color: #00ff88; text-shadow: 0 0 10px rgba(0,255,136,0.5); }
+
+        .capsule-btn {
+            display: inline-block; padding: 0.35em 1.2em; border-radius: 999px;
+            background: linear-gradient(90deg,#1976d2 0%,#2196f3 100%);
+            color:#f5f5f5; font-weight:500; font-size:15px; text-decoration:none;
+            box-shadow:0 2px 6px rgba(25,118,210,0.10); border:none; transition: background .3s, box-shadow .3s, transform .2s;
+            cursor:pointer; outline:none; white-space:nowrap;
+        }
+        .capsule-btn:hover,.capsule-btn:focus{ background:linear-gradient(90deg,#1565c0 0%,#1976d2 100%); box-shadow:0 4px 12px rgba(25,118,210,0.18); transform:translateY(-2px) scale(1.04); }
+
+        .nav-menu {
+            display:flex; gap:18px; list-style:none; margin:0; padding:0; justify-content:center; width:auto; 
+        }
+        .nav-menu li { flex:0 0 auto; }
+        .nav-menu li a { color:white; text-decoration:none; font-size:16px; transition:color .3s; position:relative; }
+        .nav-menu li a:hover{ color:#00ff88; }
+        .nav-menu li a::after{ content:''; position:absolute; bottom:-5px; left:0; width:0; height:2px; background:#00ff88; transition:width .3s; }
+        .nav-menu li a:hover::after{ width:100%; }
+
+        .nav-menu::-webkit-scrollbar{ height:6px; }
+        .nav-menu::-webkit-scrollbar-thumb{ background:#1976d2; border-radius:3px; }
+        .nav-menu::-webkit-scrollbar-track{ background:#eee; }
+
+        .status-indicator{ display:flex; align-items:center; gap:8px; color:#00ff88; font-size:14px; }
+        .status-dot{ width:8px; height:8px; background:#00ff88; border-radius:50%; animation:pulse 2s infinite; }
+        @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:0.5;} }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(26,26,46,0.9) 50%, rgba(22,33,62,0.9) 100%);
+            backdrop-filter: blur(15px);
+            border-top: 1px solid rgba(0,255,136,0.3);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 30px;
+        }
+        .footer-center {
+            color: #fff !important;
+            font-size: 18px !important;
+            font-weight: 700 !important;
+            text-align: center !important;
+            text-shadow: 0 0 12px #00ff88, 0 0 4px #fff, 0 2px 12px rgba(0,255,136,0.35);
+            letter-spacing: 2px !important;
+            width: 100%;
+            text-align: center;
+        }
+
+        .social-links a{ color:#fff !important; text-shadow:0 0 8px #00ff88,0 0 2px #fff; }
+        .social-links a:hover{ color:#00ff88 !important; text-shadow:0 0 12px #00ff88,0 0 4px #fff; }
+
+    .avatar-img{ width:48px; height:48px; border-radius:50%; box-shadow:0 2px 8px rgba(25,118,210,0.15); margin-right:8px; object-fit:cover; vertical-align:middle; flex-shrink:0; }
+    .avatar-name{ font-size:22px; font-weight:bold; color:#00ff88; margin-right:12px; letter-spacing:2px; text-shadow:0 0 8px #00ff88,0 0 2px #fff; }
+    .title-badge{ height:32px; width:auto; margin-right:8px; vertical-align:middle; display:inline-block; max-width:60%; overflow:visible; }
+
+        .header-right{ position:fixed; right:12px; top:calc(80px + 12px); display:flex; align-items:center; gap:12px; z-index:2500; pointer-events:auto; }
+        .dynamic-clock{ color:#bfffd6; font-weight:600; font-size:14px; padding:6px 10px; border-radius:999px; background:rgba(0,0,0,0.18); box-shadow:0 2px 8px rgba(0,255,136,0.06); text-shadow:0 0 6px rgba(0,255,136,0.15); white-space:nowrap; }
+
+        @media (max-width:900px){
+            .header-right{ display:none; }
+        }
+
+        @media (max-width:900px){
+            .hamburger{ display:flex; }
+            .nav-menu{
+                display:none !important;
+                flex-direction:column;
+                gap:10px;
+                position:fixed;
+                top:90px;
+                left:50%;
+                transform:translateX(-50%);
+                width:86%;
+                max-height:calc(100vh - 170px);
+                padding:12px 16px 120px 16px; 
+                background:rgba(26,35,126,0.94);
+                backdrop-filter:blur(6px);
+                border-radius:12px;
+                box-shadow:0 8px 32px rgba(0,0,0,0.45);
+                overflow-y:auto;
+                -webkit-overflow-scrolling:touch;
+                touch-action:pan-y;
+                overscroll-behavior: contain;
+                white-space:normal;
+                scrollbar-width:thin;
+                scrollbar-color:#1976d2 rgba(0,0,0,0.1);
+                z-index:9999;
+                pointer-events:auto;
+            }
+            .nav-menu.show{ display:flex !important; }
+            .nav-menu li{ margin:10px 0; text-align:center; }
+            .nav-menu::-webkit-scrollbar{ height:8px; }
+            .nav-menu::-webkit-scrollbar-thumb{ background:#1976d2; border-radius:4px; }
+            .header-left{ flex:1; min-width:0; justify-content:flex-start; align-items:center; }
+            .hamburger{ margin-left:auto; }
+            .avatar-img{ width:40px; height:40px; }
+            .title-badge{ height:26px; max-width:55%; }
+        }
+    </style>
+    <style>
+        .content-container{ padding: 100px 8vw 120px 8vw; box-sizing: border-box; min-height: calc(100vh - 200px); }
+        /* 确保内容不会被固定头部/页脚遮挡，且滚动体验平滑 */
+        html, body{ scroll-behavior: smooth; }
+        @supports (position: sticky) {
+            .content-container{ padding-top: calc(80px + 28px); padding-bottom: calc(60px + 28px); }
+        }
+    /* make declaration container visually neutral so statute cards inside align with other cards */
+    .declaration{ max-width: 980px; margin: 0 auto; background: transparent; padding: 18px 0 24px 0; border-radius: 0; box-shadow: none; color: #e6fff2; line-height: 1.9; }
+    .declaration-title{ font-size: 28px; color: #00ff88; margin: 0 0 18px 0; text-shadow:0 0 8px rgba(0,255,136,0.25); text-align:center; }
+    .declaration p{ font-size:16px; margin: 12px 0; color: #dfffe6; text-indent:2em; }
+    .declaration ol{ margin-left: 20px; color: #dfffe6; }
+    .declaration li{ margin: 8px 0; text-indent:2em; }
+        .declaration .caption{ margin-top:18px; font-size:13px; color:#9fffcf; text-align:right; text-indent:0; }
+        .manual-list{ margin-top:8px; }
+        .manual-item{ margin: 10px 0; text-indent:2em; line-height:1.9; }
+        @media (max-width:900px){ .content-container{ padding: 90px 4vw 100px 4vw; } .declaration{ padding:20px; } .declaration-title{ font-size:22px; } }
+    </style>
+    <style>
+        @media (max-width:900px){
+            .nav-menu{ display:none !important; }
+        }
+    </style>
+    <!-- Collapsible statute styles (moved here from body) -->
+    <style>
+        /* Dark-theme friendly card (statutes) */
+        .statute-card{ max-width:980px; margin:20px auto; background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)); padding:18px; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.6); color:#e6f7ff; position:relative; border:1px solid rgba(255,255,255,0.02); }
+        .statute-card .meta{ display:flex; justify-content:space-between; align-items:center; gap:12px; }
+        /* reduce statute title size so it's not larger than the law name */
+    .statute-title{ font-size:16px; color:#8fb9ff; font-weight:700; margin:0; text-shadow:0 1px 0 rgba(0,0,0,0.4); }
+        .statute-controls{ display:flex; gap:10px; align-items:center; }
+        .official-link{ color:#2b8cff; text-decoration:none; font-size:13px; border:1px solid rgba(43,140,255,0.14); padding:6px 10px; border-radius:10px; background:rgba(43,140,255,0.04); box-shadow:0 2px 6px rgba(43,140,255,0.04); }
+        .official-link:hover{ background:rgba(43,140,255,0.10); box-shadow:0 4px 14px rgba(43,140,255,0.08); }
+        .toggle-btn{ cursor:pointer; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); padding:8px 12px; border-radius:10px; color:#dfe9ff; font-weight:700; box-shadow:0 4px 12px rgba(0,0,0,0.45); transition:transform .12s ease, background .12s; }
+        .toggle-btn:hover{ transform:translateY(-2px); background:rgba(255,255,255,0.06); }
+        /* unify panel appearance for both statute-body and law-content so all cards look consistent */
+        .statute-body, .law-content{
+            margin-top:12px;
+            padding:18px;
+            /* use the deeper purple gradient used by law-content for visual consistency */
+            background: linear-gradient(180deg,#2b1b38 0%, #341f49 100%);
+            border-radius:10px;
+            color:#e6f7ff;
+            line-height:1.9;
+            border:1px solid rgba(255,255,255,0.02);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.01);
+        }
+        /* keep the old collapse helper but make show class behave consistently */
+        .collapse-hidden{ display:none; }
+        .statute-body.show, .law-content.show{ display:block; }
+        .statute-snippet{ background:rgba(255,255,255,0.02); padding:12px; border-radius:8px; }
+        .collapse-hidden{ display:none; }
+        /* softer purple highlight suitable for dark background */
+        .highlight-box{ background:linear-gradient(180deg, rgba(86,42,140,0.12), rgba(86,42,140,0.06)); border-radius:8px; padding:14px; border:1px solid rgba(120,84,200,0.06); }
+        .highlight-box p{ color:rgba(230,255,240,0.95); }
+        @media (max-width:900px){ .statute-card{ margin:14px 4vw; } }
+
+        /* Make the law name more prominent than article headings */
+        .manual-list .manual-item{ font-size:17px; color:#bfefff; font-weight:600; margin:10px 0; }
+    </style>
+    <!-- Font Awesome for chevrons used in legal_basis style -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <style>
+        /* legal_basis inspired: clean law-content and toggle button */
+        .toggle-law-btn, .toggle-btn { display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:8px; border:1px solid rgba(255,255,255,0.04); background:rgba(255,255,255,0.02); color:#cfe8ff; cursor:pointer; font-weight:600; }
+        .toggle-law-btn i, .toggle-btn i { transition: transform .18s ease; color:#8fb9ff; }
+        .toggle-law-btn[aria-expanded="true"] i, .toggle-btn[aria-expanded="true"] i { transform: rotate(180deg); }
+    /* law-content defined above together with .statute-body for visual parity */
+        /* small helper to visually separate header and controls */
+        .statute-card .meta{ align-items:center; }
+        @media (max-width:900px){ .toggle-law-btn, .toggle-btn { padding:6px 8px; } }
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="header-left">
+        
+            <img src="images\A5.png" alt="头像" class="avatar-img">
+            <button class="hamburger" id="hamburgerBtn" aria-label="菜单">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        <nav>
+            <ul class="nav-menu" id="navMenu">
+                <li><a class="capsule-btn" href="index.html">网站主页</a></li>
+                <li><a class="capsule-btn" href="statement.html">重要申明</a></li>
+                <li><a class="capsule-btn" href="public.html">公安专栏</a></li>
+                <li><a class="capsule-btn" href="procuratorate.html">检察专栏</a></li>
+                <li><a class="capsule-btn" href="court.html">法院专栏</a></li>
+                <li><a class="capsule-btn" href="interview.html">信访专栏</a></li>
+                <li><a class="capsule-btn" href="inspection.html">巡视专栏</a></li>
+                <li><a class="capsule-btn" href="law.html">法规专栏</a></li>
+                <li><a class="capsule-btn" href="webmaster.html">站长动态</a></li>
+                <li><a class="capsule-btn" href="contact.html">联系站长</a></li>
+            </ul>
+        </nav>
+    </div>
+    </div>
+    <div class="header-right">
+        <div id="dynamic-clock" class="dynamic-clock" aria-live="polite">正在加载时间...</div>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var hamburger = document.getElementById('hamburgerBtn');
+        var navMenu = document.getElementById('navMenu');
+        var placeholder = document.createElement('div');
+        placeholder.style.display = 'none';
+        navMenu.parentNode.insertBefore(placeholder, navMenu.nextSibling);
+
+      navMenu.classList.remove('show');
+      try { console.info('navMenu items count:', navMenu.querySelectorAll('li').length);
+          console.info(Array.from(navMenu.querySelectorAll('li a')).map(a=>a.textContent.trim())); } catch(e) {}
+        if (window.innerWidth <= 900) {
+            navMenu.style.display = 'none';
+        }
+
+        var movedToBody = false;
+
+        hamburger.addEventListener('click', function() {
+            var isShown = navMenu.classList.toggle('show');
+            navMenu.style.display = '';
+
+            if (isShown) {
+                if (!movedToBody) {
+                    document.body.appendChild(navMenu);
+                    movedToBody = true;
+                }
+                setTimeout(function() { navMenu.scrollTop = 0; }, 50);
+            } else {
+                if (movedToBody) {
+                    placeholder.parentNode.insertBefore(navMenu, placeholder.nextSibling);
+                    movedToBody = false;
+                }
+            }
+        });
+    });
+    </script>
+</header>
+
+<main class="content-container" role="main" aria-labelledby="declaration-title">
+    <section class="declaration" id="declaration" aria-label="法规专栏">
+        <h1 id="declaration-title" class="declaration-title">法规专栏</h1>
+
+    <h3>一、全国性法规</h3>
+
+    <script>
+        (function(){
+            function toggleLawHandler(e){
+                var btn = e.currentTarget;
+                var targetId = btn.getAttribute('data-target');
+                var body = document.getElementById(targetId);
+                if(!body) return;
+                // support both .law-content (from legal_basis) and .statute-body
+                var isShown = body.classList.contains('show') || !body.classList.contains('collapse-hidden') && !body.classList.contains('hidden');
+                if(isShown){
+                    // hide
+                    body.classList.remove('show');
+                    body.classList.add('collapse-hidden');
+                    btn.setAttribute('aria-expanded','false');
+                    var span = btn.querySelector('span'); if(span) span.textContent = '展开';
+                } else {
+                    // show
+                    body.classList.add('show');
+                    body.classList.remove('collapse-hidden');
+                    btn.setAttribute('aria-expanded','true');
+                    var span2 = btn.querySelector('span'); if(span2) span2.textContent = '收起';
+                }
+            }
+            document.addEventListener('DOMContentLoaded', function(){
+                var btns = document.querySelectorAll('.toggle-law-btn');
+                btns.forEach(function(b){ b.addEventListener('click', toggleLawHandler); });
+            });
+        })();
+    </script>
+
+    <div class="statute-card" id="statute-robbery">
+        <div class="meta">
+            <h4 class="statute-title">《中华人民共和国刑法》</h4>
+            <div class="statute-controls">
+                <button class="toggle-law-btn" data-target="statute-robbery-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
+                <a class="official-link" href="https://gat.sc.gov.cn/scgat/c108968/2024/10/15/6914533aa6954b4f9c780a340c418735.shtml" target="_blank" rel="noopener">官方原文</a>
+            </div>
+        </div>
+        <div id="statute-robbery-body" class="law-content collapse-hidden">
+            <div class="highlight-box">
+                <p class="text-indent-2"><strong>第二百六十三条</strong>　【抢劫罪】以暴力、胁迫或者其他方法抢劫公私财物的，处三年以上十年以下有期徒刑，并处罚金；有下列情形之一的，处十年以上有期徒刑、无期徒刑或者死刑，并处罚金或者没收财产：</p>
+                <p class="text-indent-2">（一）入户抢劫的；</p>
+                <p class="text-indent-2">（二）在公共交通工具上抢劫的；</p>
+                <p class="text-indent-2">（三）抢劫银行或者其他金融机构的；</p>
+                <p class="text-indent-2">（四）多次抢劫或者抢劫数额巨大的；</p>
+                <p class="text-indent-2">（五）抢劫致人重伤、死亡的；</p>
+                <p class="text-indent-2">（六）冒充军警人员抢劫的；</p>
+                <p class="text-indent-2">（七）持枪抢劫的；</p>
+                <p class="text-indent-2">（八）抢劫军用物资或者抢险、救灾、救济物资的。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="statute-card" id="statute-cpl">
+        <div class="meta">
+            <h4 class="statute-title">《中华人民共和国刑事诉讼法》</h4>
+            <div class="statute-controls">
+                <button class="toggle-law-btn" data-target="statute-cpl-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
+                <a class="official-link" href="http://gongbao.court.gov.cn/Details/11aaa996a59f5824912be62d3dfa0d.html?sw=" target="_blank" rel="noopener">官方原文</a>
+            </div>
+        </div>
+        <div id="statute-cpl-body" class="law-content collapse-hidden">
+            <div class="highlight-box">
+                <p class="text-indent-2"><strong>第八十五条</strong>公安机关拘留人的时候，必须出示拘留证。</p>
+                <p class="text-indent-2">拘留后，应当立即将被拘留人送看守所羁押，至迟不得超过二十四小时。除无法通知或者涉嫌危害国家安全犯罪、恐怖活动犯罪通知可能有碍侦查的情形以外，应当在拘留后二十四小时以内，通知被拘留人的家属。有碍侦查的情形消失以后，应当立即通知被拘留人的家属。</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="statute-card" id="statute-petition">
+        <div class="meta">
+            <h4 class="statute-title">《信访工作条例》</h4>
+            <div class="statute-controls">
+                <button class="toggle-law-btn" data-target="statute-petition-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
+                <a class="official-link" href="https://www.gov.cn/zhengce/2022-04/07/content_5683923.htm" target="_blank" rel="noopener">官方原文</a>
+            </div>
+        </div>
+        <div id="statute-petition-body" class="law-content collapse-hidden">
+            <div class="highlight-box">
+                <p class="text-indent-2"><strong>第二十二条</strong> 各级党委和政府信访部门收到信访事项，应当予以登记，并区分情况，在15日内分别按照下列方式处理：</p>
+                <p class="text-indent-2">（一）对依照职责属于本级机关、单位或者其工作部门处理决定的，应当转送有权处理的机关、单位；情况重大、紧急的，应当及时提出建议，报请本级党委和政府决定。</p>
+                <p class="text-indent-2">（二）涉及下级机关、单位或者其工作人员的，按照"属地管理、分级负责，谁主管、谁负责"的原则，转送有权处理的机关、单位。</p>
+                <p class="text-indent-2">（三）对转送信访事项中的重要情况需要反馈办理结果的，可以交由有权处理的机关、单位办理，要求其在指定办理期限内反馈结果，提交办结报告。</p>
+                <p class="text-indent-2">各级党委和政府信访部门对收到的涉法涉诉信件，应当转送同级政法部门依法处理；对走访反映涉诉问题的信访人，应当释法明理，引导其向有关政法部门反映问题。对属于纪检监察机关受理的检举控告类信访事项，应当按照管理权限转送有关纪检监察机关依规依纪依法处理。</p>
+                <p class="text-indent-2"><strong>第二十三条</strong> 党委和政府信访部门以外的其他机关、单位收到信访人直接提出的信访事项，应当予以登记；对属于本机关、单位职权范围的，应当告知信访人接收情况以及处理途径和程序；对属于本系统下级机关、单位职权范围的，应当转送、交办有权处理的机关、单位，并告知信访人转送、交办去向；对不属于本机关、单位或者本系统职权范围的，应当告知信访人向有权处理的机关、单位提出。</p>
+                <p class="text-indent-2">对信访人直接提出的信访事项，有关机关、单位能够当场告知的，应当当场书面告知；不能当场告知的，应当自收到信访事项之日起15日内书面告知信访人，但信访人的姓名（名称）、住址不清的除外。</p>
+                <p class="text-indent-2">对党委和政府信访部门或者本系统上级机关、单位转送、交办的信访事项，属于本机关、单位职权范围的，有关机关、单位应当自收到之日起15日内书面告知信访人接收情况以及处理途径和程序；不属于本机关、单位或者本系统职权范围的，有关机关、单位应当自收到之日起5个工作日内提出异议，并详细说明理由，经转送、交办的信访部门或者上级机关、单位核实同意后，交还相关材料。</p>
+                <p class="text-indent-2">政法部门处理涉及诉讼权利救济事项、纪检监察机关处理检举控告事项的告知按照有关规定执行。</p>
+                <p class="text-indent-2"><strong>第三十九条</strong> 各级党委和政府应当以依规依法及时就地解决信访问题为导向，每年对信访工作情况进行考核。考核结果应当在适当范围内通报，并作为对领导班子和有关领导干部综合考核评价的重要参考。</p>
+                <p class="text-indent-2">对在信访工作中作出突出成绩和贡献的机关、单位或者个人，可以按照有关规定给予表彰和奖励。</p>
+                <p class="text-indent-2">对在信访工作中履职不力、存在严重问题的领导班子和领导干部，视情节轻重，由信访工作联席会议进行约谈、通报、挂牌督办，责令限期整改。</p>
+                <p class="text-indent-2"><strong>第四十二条</strong> 因下列情形之一导致信访事项发生，造成严重后果的，对直接负责的主管人员和其他直接责任人员，依规依纪依法严肃处理；构成犯罪的，依法追究刑事责任：</p>
+                <p class="text-indent-2">（一）超越或者滥用职权，侵害公民、法人或者其他组织合法权益；</p>
+                <p class="text-indent-2">（二）应当作为而不作为，侵害公民、法人或者其他组织合法权益；</p>
+                <p class="text-indent-2">（三）适用法律、法规错误或者违反法定程序，侵害公民、法人或者其他组织合法权益；</p>
+                <p class="text-indent-2">（四）拒不执行有权处理机关、单位作出的支持信访请求意见。</p>
+                <p class="text-indent-2"><strong>第四十四条</strong> 负有受理信访事项职责的机关、单位有下列情形之一的，由其上级机关、单位责令改正；造成严重后果的，对直接负责的主管人员和其他直接责任人员依规依纪依法严肃处理：</p>
+                <p class="text-indent-2">（一）对收到的信访事项不按照规定登记；</p>
+                <p class="text-indent-2">（二）对属于其职权范围的信访事项不予受理；</p>
+                <p class="text-indent-2">（三）未在规定期限内书面告知信访人是否受理信访事项。</p>
+                <p class="text-indent-2"><strong>第四十五条</strong> 对信访事项有权处理的机关、单位有下列情形之一的，由其上级机关、单位责令改正；造成严重后果的，对直接负责的主管人员和其他直接责任人员依规依纪依法严肃处理：</p>
+                <p class="text-indent-2">（一）推诿、敷衍、拖延信访事项办理或者未在规定期限内办结信访事项；</p>
+                <p class="text-indent-2">（二）对事实清楚，符合法律、法规、规章或者其他有关规定的投诉请求未予支持；</p>
+                <p class="text-indent-2">（三）对党委和政府信访部门提出的改进工作、完善政策等建议重视不够、落实不力，导致问题长期得不到解决；</p>
+                <p class="text-indent-2">（四）其他不履行或者不正确履行信访事项处理职责的情形。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="statute-card" id="statute-govinfo">
+        <div class="meta">
+            <h4 class="statute-title">《中华人民共和国政府信息公开条例》（国务院令第　711　号）</h4>
+            <div class="statute-controls">
+                <button class="toggle-law-btn" data-target="statute-govinfo-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
+                <a class="official-link" href="https://www.gov.cn/gongbao/content/2019/content_5386612.htm" target="_blank" rel="noopener noreferrer">官方原文</a>
+            </div>
+        </div>
+        <div id="statute-govinfo-body" class="law-content collapse-hidden">
+            <div class="highlight-box">
+                <p class="text-indent-2"><strong>第二十七条</strong> 除行政机关主动公开的政府信息外，公民、法人或者其他组织可以向地方各级人民政府、对外以自己名义履行行政管理职能的县级以上人民政府部门（含本条例第十条第二款规定的派出机构、内设机构）申请获取相关政府信息。</p>
+                <p class="text-indent-2"><strong>第二十八条</strong> 本条例第二十七条规定的行政机关应当建立完善政府信息公开申请渠道，为申请人依法申请获取政府信息提供便利。</p>
+                <p class="text-indent-2"><strong>第二十九条</strong> 公民、法人或者其他组织申请获取政府信息的，应当向行政机关的政府信息公开工作机构提出，并采用包括信件、数据电文在内的书面形式；采用书面形式确有困难的，申请人可以口头提出，由受理该申请的政府信息公开工作机构代为填写政府信息公开申请。</p>
+                <p class="text-indent-2">政府信息公开申请应当包括下列内容：</p>
+                <p class="text-indent-2">（一）申请人的姓名或者名称、身份证明、联系方式；</p>
+                <p class="text-indent-2">（二）申请公开的政府信息的名称、文号或者便于行政机关查询的其他特征性描述；</p>
+                <p class="text-indent-2">（三）申请公开的政府信息的形式要求，包括获取信息的方式、途径。</p>
+                <p class="text-indent-2"><strong>第三十条</strong> 政府信息公开申请内容不明确的，行政机关应当给予指导和释明，并自收到申请之日起7个工作日内一次性告知申请人作出补正，说明需要补正的事项和合理的补正期限。答复期限自行政机关收到补正的申请之日起计算。申请人无正当理由逾期不补正的，视为放弃申请，行政机关不再处理该政府信息公开申请。</p>
+                <p class="text-indent-2"><strong>第三十一条</strong> 行政机关收到政府信息公开申请的时间，按照下列规定确定：</p>
+                <p class="text-indent-2">（一）申请人当面提交政府信息公开申请的，以提交之日为收到申请之日；</p>
+                <p class="text-indent-2">（二）申请人以邮寄方式提交政府信息公开申请的，以行政机关签收之日为收到申请之日；以平常信函等无需签收的邮寄方式提交政府信息公开申请的，政府信息公开工作机构应当于收到申请的当日与申请人确认，确认之日为收到申请之日；</p>
+                <p class="text-indent-2">（三）申请人通过互联网渠道或者政府信息公开工作机构的传真提交政府信息公开申请的，以双方确认之日为收到申请之日。</p>
+                <p class="text-indent-2"><strong>第三十二条</strong> 依申请公开的政府信息公开会损害第三方合法权益的，行政机关应当书面征求第三方的意见。第三方应当自收到征求意见书之日起15个工作日内提出意见。第三方逾期未提出意见的，由行政机关依照本条例的规定决定是否公开。第三方不同意公开且有合理理由的，行政机关不予公开。行政机关认为不公开可能对公共利益造成重大影响的，可以决定予以公开，并将决定公开的政府信息内容和理由书面告知第三方。</p>
+                <p class="text-indent-2"><strong>第三十三条</strong> 行政机关收到政府信息公开申请，能够当场答复的，应当当场予以答复。</p>
+                <p class="text-indent-2">行政机关不能当场答复的，应当自收到申请之日起20个工作日内予以答复；需要延长答复期限的，应当经政府信息公开工作机构负责人同意并告知申请人，延长的期限最长不得超过20个工作日。</p>
+                <p class="text-indent-2">行政机关征求第三方和其他机关意见所需时间不计算在前款规定的期限内。</p>
+                <p class="text-indent-2"><strong>第三十四条</strong> 申请公开的政府信息由两个以上行政机关共同制作的，牵头制作的行政机关收到政府信息公开申请后可以征求相关行政机关的意见，被征求意见机关应当自收到征求意见书之日起15个工作日内提出意见，逾期未提出意见的视为同意公开。</p>
+                <p class="text-indent-2"><strong>第三十五条</strong> 申请人申请公开政府信息的数量、频次明显超过合理范围，行政机关可以要求申请人说明理由。行政机关认为申请理由不合理的，告知申请人不予处理；行政机关认为申请理由合理，但是无法在本条例第三十三条规定的期限内答复申请人的，可以确定延迟答复的合理期限并告知申请人。</p>
+                <p class="text-indent-2"><strong>第三十六条</strong> 对政府信息公开申请，行政机关根据下列情况分别作出答复：</p>
+                <p class="text-indent-2">（一）所申请公开信息已经主动公开的，告知申请人获取该政府信息的方式、途径；</p>
+                <p class="text-indent-2">（二）所申请公开信息可以公开的，向申请人提供该政府信息，或者告知申请人获取该政府信息的方式、途径和时间；</p>
+                <p class="text-indent-2">（三）行政机关依据本条例的规定决定不予公开的，告知申请人不予公开并说明理由；</p>
+                <p class="text-indent-2">（四）经检索没有所申请公开信息的，告知申请人该政府信息不存在；</p>
+                <p class="text-indent-2">（五）所申请公开信息不属于本行政机关负责公开的，告知申请人并说明理由；能够确定负责公开该政府信息的行政机关的，告知申请人该行政机关的名称、联系方式；</p>
+                <p class="text-indent-2">（六）行政机关已就申请人提出的政府信息公开申请作出答复、申请人重复申请公开相同政府信息的，告知申请人不予重复处理；</p>
+                <p class="text-indent-2">（七）所申请公开信息属于工商、不动产登记资料等信息，有关法律、行政法规对信息的获取有特别规定的，告知申请人依照有关法律、行政法规的规定办理。</p>
+                <p class="text-indent-2"><strong>第三十七条</strong> 申请公开的信息中含有不应当公开或者不属于政府信息的内容，但是能够作区分处理的，行政机关应当向申请人提供可以公开的政府信息内容，并对不予公开的内容说明理由。</p>
+                <p class="text-indent-2"><strong>第三十八条</strong> 行政机关向申请人提供的信息，应当是已制作或者获取的政府信息。除依照本条例第三十七条的规定能够作区分处理的外，需要行政机关对现有政府信息进行加工、分析的，行政机关可以不予提供。</p>
+                <p class="text-indent-2"><strong>第三十九条</strong> 申请人以政府信息公开申请的形式进行信访、投诉、举报等活动，行政机关应当告知申请人不作为政府信息公开申请处理并可以告知通过相应渠道提出。</p>
+                <p class="text-indent-2">申请人提出的申请内容为要求行政机关提供政府公报、报刊、书籍等公开出版物的，行政机关可以告知获取的途径。</p>
+                <p class="text-indent-2"><strong>第四十条</strong> 行政机关依申请公开政府信息，应当根据申请人的要求及行政机关保存政府信息的实际情况，确定提供政府信息的具体形式；按照申请人要求的形式提供政府信息，可能危及政府信息载体安全或者公开成本过高的，可以通过电子数据以及其他适当形式提供，或者安排申请人查阅、抄录相关政府信息。</p>
+                <p class="text-indent-2"><strong>第四十一条</strong> 公民、法人或者其他组织有证据证明行政机关提供的与其自身相关的政府信息记录不准确的，可以要求行政机关更正。有权更正的行政机关审核属实的，应当予以更正并告知申请人；不属于本行政机关职能范围的，行政机关可以转送有权更正的行政机关处理并告知申请人，或者告知申请人向有权更正的行政机关提出。</p>
+                <p class="text-indent-2"><strong>第四十二条</strong> 行政机关依申请提供政府信息，不收取费用。但是，申请人申请公开政府信息的数量、频次明显超过合理范围的，行政机关可以收取信息处理费。</p>
+                <p class="text-indent-2">行政机关收取信息处理费的具体办法由国务院价格主管部门会同国务院财政部门、全国政府信息公开工作主管部门制定。</p>
+                <p class="text-indent-2"><strong>第四十三条</strong> 申请公开政府信息的公民存在阅读困难或者视听障碍的，行政机关应当为其提供必要的帮助。</p>
+                <p class="text-indent-2"><strong>第四十四条</strong> 多个申请人就相同政府信息向同一行政机关提出公开申请，且该政府信息属于可以公开的，行政机关可以纳入主动公开的范围。</p>
+                <p class="text-indent-2">对行政机关依申请公开的政府信息，申请人认为涉及公众利益调整、需要公众广泛知晓或者需要公众参与决策的，可以建议行政机关将该信息纳入主动公开的范围。行政机关经审核认为属于主动公开范围的，应当及时主动公开。</p>
+                <p class="text-indent-2"><strong>第四十五条</strong> 行政机关应当建立健全政府信息公开申请登记、审核、办理、答复、归档的工作制度，加强工作规范。</p>
+                <p class="text-indent-2">***</p>
+            </div>
+        </div>
+    </div>
+
+    <h3>二、关联公安法规</h3>
+
+    <!-- 从 legal_basis.html 提取的公安相关法规（排除已在第一部分列出的四项） -->
+    <div class="statute-card" id="statute-proc127">
+        <div class="meta">
+            <h4 class="statute-title">《公安机关办理刑事案件程序规定》（公安部令第127号）</h4>
+            <div class="statute-controls">
+                <button class="toggle-law-btn" data-target="statute-proc127-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
+                <a class="official-link" href="https://www.mps.gov.cn:8090/n6557558/c7684065/content.html" target="_blank" rel="noopener">官方原文</a>
+            </div>
+        </div>
+        <div id="statute-proc127-body" class="law-content collapse-hidden">
+            <div class="highlight-box">
+                <p class="text-indent-2"><strong>第一百八十五条</strong> 公安机关作出撤销案件决定后，应当在三日以内告知原犯罪嫌疑人、被害人或者其近亲属、法定代理人以及案件移送机关。</p>
+                <p class="text-indent-2">公安机关作出终止侦查决定后，应当在三日以内告知原犯罪嫌疑人。</p>
+                <p class="text-indent-2"><strong>第一百八十九条</strong> 公安机关侦查犯罪，应当严格依照法律规定的条件和程序采取强制措施和侦查措施，严禁在没有证据的情况下，仅凭怀疑就对犯罪嫌疑人采取强制措施和侦查措施。</p>
+                <p class="text-indent-2"><strong>第二百零三条</strong> 讯问犯罪嫌疑人，在文字记录的同时，可以对讯问过程进行录音或者录像。对于可能判处无期徒刑、死刑的案件或者其他重大犯罪案件，应当对讯问过程进行录音或者录像。</p>
+                <p class="text-indent-2">对讯问过程录音或者录像的，应当对每一次讯问全程不间断进行，保持完整性。不得选择性地录制，不得剪接、删改。</p>
+                <p class="text-indent-2"><strong>第二百七十九条</strong> 对侦查终结的案件，应当制作起诉意见书，经县级以上公安机关负责人批准后，连同全部案卷材料、证据，以及辩护律师提出的意见，一并移送同级人民检察院审查决定；同时将案件移送情况告知犯罪嫌疑人及其辩护律师。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="statute-card" id="statute-doc2012">
+        <div class="meta">
+            <h4 class="statute-title">《公安机关刑事法律文书式样（2012版）》(公通字〔2012〕62号)</h4>
+            <div class="statute-controls">
+                <button class="toggle-law-btn" data-target="statute-doc2012-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
+                <a class="official-link" href="https://www.mps.gov.cn/n6557558/c4202651/content.html" target="_blank" rel="noopener">官方原文</a>
+            </div>
+        </div>
+        <div id="statute-doc2012-body" class="law-content collapse-hidden">
+            <div class="highlight-box">
+                <p class="text-indent-2">《公安机关刑事法律文书式样（2012版）》从2013年1月1日起启用。刑事法律文书由各省、自治区、直辖市公安厅、局和新疆生产建设兵团公安局根据本通知印发的样本自行印刷，并由法制部门监制和保管。同时，各地要按照执法信息化建设的要求，不断完善网上执法办案信息系统，积极开展网上审核审批和制作法律文书，提高办案效率，提升执法质量。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="statute-card" id="statute-police-petition">
+        <div class="meta">
+            <h4 class="statute-title">《公安机关信访工作规定》（公通字〔2023〕9号）</h4>
+            <div class="statute-controls">
+                <button class="toggle-law-btn" data-target="statute-police-petition-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
+                <a class="official-link" href="https://www.mps.gov.cn/n6557558/c9072148/content.html" target="_blank" rel="noopener">官方原文</a>
+            </div>
+        </div>
+        <div id="statute-police-petition-body" class="law-content collapse-hidden">
+            <div class="highlight-box">
+                <p class="text-indent-2"><strong>第二十二条</strong> 对申诉求决类信访事项，根据诉求内容及处理的程序，分为下列事项:</p>
+                <p class="text-indent-2">（一）通过法律程序处理的事项；（二）通过复核、申诉等程序解决的人事争议事项；（三）通过党员申诉、申请复审等程序解决的事项；（四）不属于以上情形的事项。</p>
+                <p class="text-indent-2"><strong>第二十三条</strong> 符合下列诉求的信访事项属于通过法律程序处理的事项:（一）申请查处违法犯罪行为、保护人身权或者财产权等合法权益的；（二）可以通过行政裁决、行政确认、行政许可、行政处罚、政府信息公开等行政程序解决的；（三）对公安机关作出的行政行为不服的；（四）对公安机关依据刑事诉讼法授权的行为不服的；（五）认为公安机关及其工作人员行使职权侵犯合法权益,造成损害，要求取得国家赔偿的；（六）对公安机关出具或者委托其他机构出具的认定、鉴定意见不服，要求复核或者重新认定、鉴定的。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="statute-card" id="statute-enforce-open">
+        <div class="meta">
+            <h4 class="statute-title">《公安机关执法公开规定》(公通字〔2018〕26号)</h4>
+            <div class="statute-controls">
+                <button class="toggle-law-btn" data-target="statute-enforce-open-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
+                <a class="official-link" href="https://www.mps.gov.cn:8080/n6557558/c6238002/content.html" target="_blank" rel="noopener">官方原文</a>
+            </div>
+        </div>
+        <div id="statute-enforce-open-body" class="law-content collapse-hidden">
+            <div class="highlight-box">
+                <p class="text-indent-2"><strong>第二条</strong> 本规定适用于公安机关主动公开执法信息，以及开展网上公开办事。</p>
+                <p class="text-indent-2">公民、法人或者其他组织申请获取执法信息的，公安机关应当依照《中华人民共和国政府信息公开条例》的规定办理。</p>
+                <p class="text-indent-2"><strong>第二十二条</strong> 除按照本规定第二十一条向特定对象告知执法信息外，公安机关应当通过提供查询的方式，向报案或者控告的被害人、被侵害人或者其监护人、家属公开下列执法信息：办案单位名称、地址和联系方式；刑事立案、移送审查起诉、终止侦查、撤销案件等情况，对犯罪嫌疑人采取刑事强制措施的种类；行政案件受案、办理结果。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="statute-card" id="statute-supervise603">
+        <div class="meta">
+            <h4 class="statute-title">《公安机关督察条例》（国务院令第603号）</h4>
+            <div class="statute-controls">
+                <button class="toggle-law-btn" data-target="statute-supervise603-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
+                <a class="official-link" href="https://www.gov.cn/gongbao/content/2011/content_1947192.htm" target="_blank" rel="noopener">官方原文</a>
+            </div>
+        </div>
+        <div id="statute-supervise603-body" class="law-content collapse-hidden">
+            <div class="highlight-box">
+                <p class="text-indent-2"><strong>第四条</strong> 督察机构对公安机关及其人民警察依法履行职责、行使职权和遵守纪律的下列事项，进行现场督察：</p>
+                <p class="text-indent-2">（一）重要的警务部署、措施、活动的组织实施情况；（二）重大社会活动的秩序维护和重点地区、场所治安管理的组织实施情况；（三）治安突发事件的处置情况；（四）刑事案件、治安案件的受理、立案、侦查、调查、处罚和强制措施的实施情况；（五）治安、交通、户政、出入境、边防、消防、警卫等公安行政管理法律、法规的执行情况；（六）使用武器、警械以及警用车辆、警用标志的情况；（七）处置公民报警、请求救助和控告申诉的情况；（八）文明执勤、文明执法和遵守警容风纪规定的情况；（九）组织管理和警务保障的情况；（十）公安机关及其人民警察依法履行职责、行使职权和遵守纪律的其他情况。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="statute-card" id="statute-av-record">
+        <div class="meta">
+            <h4 class="statute-title">《公安机关现场执法视音频记录工作规定》（公通字〔2016〕14号）</h4>
+            <div class="statute-controls">
+                <button class="toggle-law-btn" data-target="statute-av-record-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
+                <a class="official-link" href="https://www.xiangshan.gov.cn/art/2020/1/21/art_1229682852_4092176.html" target="_blank" rel="noopener">官方原文</a>
+            </div>
+        </div>
+        <div id="statute-av-record-body" class="law-content collapse-hidden">
+            <div class="highlight-box">
+                <p class="text-indent-2"><strong>第六条</strong> 开展现场执法视音频记录时，应当对执法过程进行全程不间断记录，自到达现场开展执法活动时开始，至执法活动结束时停止；从现场带回违法犯罪嫌疑人的，应当记录至将违法犯罪嫌疑人带入公安机关执法办案场所办案区时停止。</p>
+                <p class="text-indent-2"><strong>第七条</strong> 现场执法视音频记录应当重点摄录以下内容：执法现场环境；违法犯罪嫌疑人、被害人、被侵害人和证人等现场人员的体貌特征和言行举止；重要涉案物品及其主要特征，以及其他可以证明违法犯罪行为的证据；执法人员现场开具、送达法律文书和对有关人员、财物采取措施情况；其他应当记录的重要内容。</p>
+                <p class="text-indent-2"><strong>第十三条</strong> 现场执法视音频资料的保存期限原则上应当不少于六个月。</p>
+                <p class="text-indent-2">对于记录以下情形的现场执法视音频资料，应当永久保存：</p>
+                <p class="text-indent-2">（一）作为行政、刑事案件证据使用的；</p>
+                <p class="text-indent-2">（二）当事人或者现场其他人员有阻碍执法、妨害公务行为的；</p>
+                <p class="text-indent-2">（三）处置重大突发事件、群体性事件的；</p>
+                <p class="text-indent-2">（四）其他重大、疑难、复杂的警情。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="statute-card" id="statute-internal40">
+        <div class="meta">
+            <h4 class="statute-title">《公安机关内部执法监督工作规定》（公安部令第40号）</h4>
+            <div class="statute-controls">
+                <button class="toggle-law-btn" data-target="statute-internal40-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
+                <a class="official-link" href="https://www.mps.gov.cn/n6557558/c7684525/content.html" target="_blank" rel="noopener">官方原文</a>
+            </div>
+        </div>
+        <div id="statute-internal40-body" class="law-content collapse-hidden">
+            <div class="highlight-box">
+                <p class="text-indent-2"><strong>第五条</strong> 各级公安机关在加强内部执法监督的同时，必须依法接受人民群众、新闻舆论的监督，接受国家权力机关、人民政府的监督，接受人民检察院的法律监督和人民法院的审判监督。</p>
+            </div>
+        </div>
+    </div>
+
+    <h3>三、关联检察法规</h3>
+
+    <div class="statute-card" id="statute-proc-12309">
+        <div class="meta">
+            <h4 class="statute-title">《法律文书公开指南》</h4>
+            <div class="statute-controls">
+                <button class="toggle-law-btn" data-target="statute-proc-12309-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
+                <a class="official-link" href="https://www.12309.gov.cn/12309/bszn/201902/t20190227_410407.shtml" target="_blank" rel="noopener">官方原文</a>
+            </div>
+        </div>
+        <div id="statute-proc-12309-body" class="law-content collapse-hidden">
+            <div class="highlight-box">
+                <p class="text-indent-2">第三条　人民检察院制作的下列法律文书，应当在人民检察院案件信息公开系统上发布：</p>
+                <p class="text-indent-2">（一）人民法院所作判决、裁定已生效的刑事案件起诉书、抗诉书；</p>
+                <p class="text-indent-2">（二）不起诉决定书；</p>
+                <p class="text-indent-2">（三）刑事申诉复查决定书；</p>
+                <p class="text-indent-2">（四）最高人民检察院认为应当在该系统发布的其他法律文书。</p>
+                <p class="text-indent-2">人民检察院不得在案件信息公开系统发布内部工作性文书。</p>
+            </div>
+        </div>
+    </div>
+
+    <h3>四、关联法院法规</h3>
+
+    <div class="statute-card" id="statute-spc-264">
+        <div class="meta">
+            <h4 class="statute-title">《最高人民法院关于全面推进人民法院电子卷宗随案同步生成和深度应用的指导意见》（法〔2016〕264号）</h4>
+            <div class="statute-controls">
+                <button class="toggle-law-btn" data-target="statute-spc-264-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
+                <a class="official-link" href="https://www.court.gov.cn/fabu/xiangqing/37402.html" target="_blank" rel="noopener">官方原文</a>
+            </div>
+        </div>
+        <div id="statute-spc-264-body" class="law-content collapse-hidden">
+            <div class="highlight-box">
+                <p class="text-indent-2"><strong>二、电子卷宗随案同步生成的基本要求</strong></p>
+                <p class="text-indent-2">（一）电子卷宗内容。电子卷宗包含法院在案件受理时接收或办理过程中形成的电子文档、图像、音频、视频等电子文件，以及将纸质案卷材料依托数字影像、文字识别等技术制作而成的电子文档、数据等电子文件。</p>
+                <p class="text-indent-2">（二）电子文件制作。电子文件包含由检察院、法院、当事人、律师、第三方机构等通过信息化系统提供的电子文档、电子证据、电子音视频材料等。案件纸质卷宗要按照《人民法院电子诉讼档案管理暂行办法》（法〔2013〕283号）的质量及格式要求制作电子文件。</p>
+                <p class="text-indent-2">（三）电子文件收集。各类电子文件可通过诉讼服务平台上传、扫描设备输入、业务系统流转等方式，收集到办案平台中。要保证电子卷宗收集的同步性和及时性，在接收纸质诉讼材料后尽快完成电子化，保障后续审判环节能够及时使用电子卷宗。电子卷宗管理系统应实现电子卷宗的自动排版和归类。涉及国家秘密的案件卷宗应在涉密办案系统中生成和应用。</p>
+                <p class="text-indent-2">（四）电子卷宗存储和保管。各高级人民法院可根据本院辖区应用系统、网络和硬件建设情况，自行决定本辖区电子卷宗集中或分布存储方式。应采取及时存储、异地备份等安全保障方式，保证电子卷宗存储的安全性。</p>
+                <p class="text-indent-2">（五）电子卷宗审查和监管。要对个人和其他单位提供的电子材料进行审查，对本院电子卷宗的质量进行监管，避免出现遗漏、错误和延误，审查和监管的内容包括数据完整度、图像文件清晰度、数据挂接准确度以及生成及时性等。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="statute-card" id="statute-spc-2018-21">
+        <div class="meta">
+            <h4 class="statute-title">《最高人民法院关于进一步加快推进电子卷宗同步生成和深度应用工作的通知》（法〔2018〕21号）</h4>
+            <div class="statute-controls">
+                <button class="toggle-law-btn" data-target="statute-spc-2018-21-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
+                <a class="official-link" href="https://www.court.gov.cn/fabu/xiangqing/95342.html" target="_blank" rel="noopener">官方原文</a>
+            </div>
+        </div>
+        <div id="statute-spc-2018-21-body" class="law-content collapse-hidden">
+            <div class="highlight-box">
+                <p class="text-indent-2">（该通知为推进电子卷宗工作的重要补充，围绕系统联通、标准规范、流程优化、质量把控等方面提出具体要求，建议阅读官方原文获取完整条款文本。）</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="statute-card" id="statute-spc-283">
+        <div class="meta">
+            <h4 class="statute-title">《最高人民法院、国家档案局关于印发<人民法院诉讼档案管理办法>和<人民法院电子诉讼档案管理暂行办法>的通知》（法〔2013〕283号）</h4>
+            <div class="statute-controls">
+                <button class="toggle-law-btn" data-target="statute-spc-283-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
+                <a class="official-link" href="https://www.faxin.cn/lib/Zyfl/ZylfSimple.aspx?gid=A289188&libid=all" target="_blank" rel="noopener">官方原文</a>
+            </div>
+        </div>
+        <div id="statute-spc-283-body" class="law-content collapse-hidden">
+            <div class="highlight-box">
+                <p class="text-indent-2"><strong>第十六条</strong> 案件当事人持身份证或者其他有效身份证明(当事人是法人的，应持法定代表人身份证明、工商登记证明复印件)，可以查阅诉讼档案正卷有关内容。律师持执业证、律师事务所介绍信、当事人授权委托书、当事人身份证明复印件，可以查阅诉讼档案正卷有关内容。其他诉讼代理人持身份证或者其他有效身份证明、当事人授权委托书、当事人身份证明复印件，可以查阅诉讼档案正卷有关内容。</p>
+                <p class="text-indent-2"><strong>第十七条</strong> 当事人或者诉讼代理人可以申请复制所查阅的档案材料。经批准复制的材料，由档案工作人员核对无误后，加盖人民法院档案证明专用章，与档案原件具有同等的效力。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="statute-card" id="statute-spc-docspec">
+        <div class="meta">
+            <h4 class="statute-title">《人民法院诉讼文书材料立卷规范》（法〔2013〕283号）</h4>
+            <div class="statute-controls">
+                <button class="toggle-law-btn" data-target="statute-spc-docspec-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
+                <a class="official-link" href="https://www.faxin.cn/lib/Zyfl/ZylfSimple.aspx?gid=A289188&libid=all" target="_blank" rel="noopener">官方原文</a>
+            </div>
+        </div>
+        <div id="statute-spc-docspec-body" class="law-content collapse-hidden">
+            <div class="highlight-box">
+                <p class="text-indent-2"><strong>第八条　诉讼文书正卷材料：</strong></p>
+                <p class="text-indent-2">(1)立案审批表；(2)起诉状、上诉状、抗诉书、案件移送函等表明案件来源的材料；(3)原审人民法院裁判文书；(4)受理通知书、应诉通知书及送达回证或者其他送达凭证；(5)答辩状及送达回证或者其他送达凭证；(6)诉讼费收取手续；(7)送卷函、调卷函；(8)当事人身份证明、授权委托书；(9)调查、询问、讯问笔录、调查取证材料；(10)当事人提供的证据材料；(11)诉前保全、财产保全材料；(12)司法鉴定材料；(13)传票、提押票；(14)开庭通知、公告、庭审笔录；(15)代理词、辩护词、被告人陈述词；(16)延长审理期限审批表；(17)撤诉书；(18)判决书、裁定书、调解书、决定书、司法建议书和其他法律文书正本及送达回证或者其他送达凭证；(19)宣判公告、宣判笔录、委托宣判函；(20)死刑执行命令；(21)物证处理材料；(22)妨碍诉讼的强制措施材料；(23)民事、行政执行材料；(24)案件移送函存根、退卷函、退卷函存根、上级人民法院裁判文书正本；(25)其他诉讼文书材料。</p>
+                <p class="text-indent-2"><strong>第九条　诉讼文书副卷材料：</strong></p>
+                <p class="text-indent-2">(1)阅卷笔录；(2)案件审理报告；(3)合议庭评议案件笔录；(4)审判委员会讨论案件记录；(5)延长审理期限的申请及批示材料；(6)判决书、裁定书、调解书、决定书、司法建议书和其他法律文书原本；(7)执行死刑照片和其他执行死刑材料；(8)其他不宜对外公开的材料。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="statute-card" id="statute-judge-code-2010-54">
+        <div class="meta">
+            <h4 class="statute-title">《法官行为规范》（法发〔2010〕54号）</h4>
+            <div class="statute-controls">
+                <button class="toggle-law-btn" data-target="statute-judge-code-2010-54-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
+                <a class="official-link" href="https://www.court.gov.cn/jianshe/xiangqing/2242.html" target="_blank" rel="noopener">官方原文</a>
+            </div>
+        </div>
+        <div id="statute-judge-code-2010-54-body" class="law-content collapse-hidden">
+            <div class="highlight-box">
+                <p class="text-indent-2"><strong>第五十三条 法律条文的引用</strong></p>
+                <p class="text-indent-2">（一）在裁判理由部分应当引用法律条款原文，必须引用到法律的条、款、项；（二）说理中涉及多个争议问题的，应当一论一引；（三）在判决主文理由部分最终援引法律依据时，只引用法律条款序号。</p>
+                <p class="text-indent-2"><strong>第五十四条 裁判文书宣告或者送达后发现文字差错</strong></p>
+                <p class="text-indent-2">（一）对一般文字差错或者病句，应当及时向当事人说明情况并收回裁判文书，以校对章补正或者重新制作裁判文书；（二）对重要文字差错或者病句，能立即收回的，当场及时收回并重新制作；无法立即收回的，应当制作裁定予以补正。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="statute-card" id="statute-citation-2009-14">
+        <div class="meta">
+            <h4 class="statute-title">《最高人民法院关于裁判文书引用法律、法规等规范性法律文件的规定》（法释〔2009〕14号）</h4>
+            <div class="statute-controls">
+                <button class="toggle-law-btn" data-target="statute-citation-2009-14-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
+                <a class="official-link" href="https://www.court.gov.cn/fabu/xiangqing/73.html" target="_blank" rel="noopener">官方原文</a>
+            </div>
+        </div>
+        <div id="statute-citation-2009-14-body" class="law-content collapse-hidden">
+            <div class="highlight-box">
+                <p class="text-indent-2"><strong>第一条</strong> 人民法院的裁判文书应当依法引用相关法律、法规等规范性法律文件作为裁判依据。引用时应当准确完整写明规范性法律文件的名称、条款序号，需要引用具体条文的，应当整条引用。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="statute-card" id="statute-case-number-2016-27">
+        <div class="meta">
+            <h4 class="statute-title">《最高人民法院关于在同一案件多个裁判文书上规范使用案号有关事项的通知》（法〔2016〕27号）</h4>
+            <div class="statute-controls">
+                <button class="toggle-law-btn" data-target="statute-case-number-2016-27-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
+                <a class="official-link" href="https://www.court.gov.cn/fabu/xiangqing/29531.html" target="_blank" rel="noopener">官方原文</a>
+            </div>
+        </div>
+        <div id="statute-case-number-2016-27-body" class="law-content collapse-hidden">
+            <div class="highlight-box">
+                <p class="text-indent-2">一、同一案件的案号具有唯一性，各级法院应规范案号在案件裁判文书上的使用。对同一案件出现的多个同类裁判文书，首份裁判文书直接使用案号，第二份开始可在案号后缀“之一”“之二”…，以示区别。</p>
+            </div>
+        </div>
+    </div>
+
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="footer-center">
+        <span>© 2025 王贵平保留所有权</span>
+    </div>
+</footer>
+
+<script>
+    (function(){
+        function pad(n){ return n<10?('0'+n):n; }
+        function weekdayName(d){ return ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'][d]; }
+        function formatClock(date){
+            return date.getFullYear() + '年' + (date.getMonth()+1) + '月' + date.getDate() + '日 ' + weekdayName(date.getDay()) + ' ' + pad(date.getHours()) + ':' + pad(date.getMinutes()) + ':' + pad(date.getSeconds());
+        }
+
+        var el = document.getElementById('dynamic-clock');
+        if(!el) return;
+        function update(){ el.textContent = formatClock(new Date()); }
+        update();
+        var timer = setInterval(update,1000);
+        window.dynamicClock = { stop: function(){ clearInterval(timer); }, start: function(){ timer = setInterval(update,1000); } };
+    })();
+</script>
+<script>
+(function(){
+    var svgBox = document.getElementById('floating-svg-container');
+    if(!svgBox) return;
+    var baseLeft = 5; 
+    var amplitude = 3; 
+    var speed = 0.7; 
+    function animate(){
+        var t = Date.now() * 0.001 * speed;
+        var offset = Math.sin(t) * amplitude;
+        svgBox.style.left = (baseLeft + offset) + 'vw';
+    }
+    setInterval(animate, 30);
+})();
+</script>
+</body>
+</html>

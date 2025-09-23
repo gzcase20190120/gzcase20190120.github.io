@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?8ce9bfe8990697d49b53155401e40598";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <link rel="icon" type="image/png" href="images\A5.png">
+    
+    <title>站长动态</title>
+    <style>
+        body {
+            margin: 0;
+            overflow-y: auto; /* 允许垂直滚动，便于浏览长文 */
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            cursor: default;
+            font-family: 'Arial', sans-serif;
+            -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+        }
+
+        canvas { display: block; }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 3000;
+        }
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 4px;
+            margin: 4px 0;
+            background: #2196f3;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        .header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 80px;
+            background: linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(26,26,46,0.9) 50%, rgba(22,33,62,0.9) 100%);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0,255,136,0.3);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px; 
+        }
+    .header-left { display: flex; align-items: center; gap: 12px; }
+
+        .logo { font-size: 24px; font-weight: bold; color: #00ff88; text-shadow: 0 0 10px rgba(0,255,136,0.5); }
+
+        .capsule-btn {
+            display: inline-block; padding: 0.35em 1.2em; border-radius: 999px;
+            background: linear-gradient(90deg,#1976d2 0%,#2196f3 100%);
+            color:#f5f5f5; font-weight:500; font-size:15px; text-decoration:none;
+            box-shadow:0 2px 6px rgba(25,118,210,0.10); border:none; transition: background .3s, box-shadow .3s, transform .2s;
+            cursor:pointer; outline:none; white-space:nowrap;
+        }
+        .capsule-btn:hover,.capsule-btn:focus{ background:linear-gradient(90deg,#1565c0 0%,#1976d2 100%); box-shadow:0 4px 12px rgba(25,118,210,0.18); transform:translateY(-2px) scale(1.04); }
+
+        .nav-menu {
+            display:flex; gap:18px; list-style:none; margin:0; padding:0; justify-content:center; width:auto; 
+        }
+        .nav-menu li { flex:0 0 auto; }
+        .nav-menu li a { color:white; text-decoration:none; font-size:16px; transition:color .3s; position:relative; }
+        .nav-menu li a:hover{ color:#00ff88; }
+        .nav-menu li a::after{ content:''; position:absolute; bottom:-5px; left:0; width:0; height:2px; background:#00ff88; transition:width .3s; }
+        .nav-menu li a:hover::after{ width:100%; }
+
+        .nav-menu::-webkit-scrollbar{ height:6px; }
+        .nav-menu::-webkit-scrollbar-thumb{ background:#1976d2; border-radius:3px; }
+        .nav-menu::-webkit-scrollbar-track{ background:#eee; }
+
+        .status-indicator{ display:flex; align-items:center; gap:8px; color:#00ff88; font-size:14px; }
+        .status-dot{ width:8px; height:8px; background:#00ff88; border-radius:50%; animation:pulse 2s infinite; }
+        @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:0.5;} }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(26,26,46,0.9) 50%, rgba(22,33,62,0.9) 100%);
+            backdrop-filter: blur(15px);
+            border-top: 1px solid rgba(0,255,136,0.3);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 30px;
+        }
+        .footer-center {
+            color: #fff !important;
+            font-size: 18px !important;
+            font-weight: 700 !important;
+            text-align: center !important;
+            text-shadow: 0 0 12px #00ff88, 0 0 4px #fff, 0 2px 12px rgba(0,255,136,0.35);
+            letter-spacing: 2px !important;
+            width: 100%;
+            text-align: center;
+        }
+
+        .social-links a{ color:#fff !important; text-shadow:0 0 8px #00ff88,0 0 2px #fff; }
+        .social-links a:hover{ color:#00ff88 !important; text-shadow:0 0 12px #00ff88,0 0 4px #fff; }
+
+    .avatar-img{ width:48px; height:48px; border-radius:50%; box-shadow:0 2px 8px rgba(25,118,210,0.15); margin-right:8px; object-fit:cover; vertical-align:middle; flex-shrink:0; }
+    .avatar-name{ font-size:22px; font-weight:bold; color:#00ff88; margin-right:12px; letter-spacing:2px; text-shadow:0 0 8px #00ff88,0 0 2px #fff; }
+    .title-badge{ height:32px; width:auto; margin-right:8px; vertical-align:middle; display:inline-block; max-width:60%; overflow:visible; }
+
+        .header-right{ position:fixed; right:12px; top:calc(80px + 12px); display:flex; align-items:center; gap:12px; z-index:2500; pointer-events:auto; }
+        .dynamic-clock{ color:#bfffd6; font-weight:600; font-size:14px; padding:6px 10px; border-radius:999px; background:rgba(0,0,0,0.18); box-shadow:0 2px 8px rgba(0,255,136,0.06); text-shadow:0 0 6px rgba(0,255,136,0.15); white-space:nowrap; }
+
+        @media (max-width:900px){
+            .header-right{ display:none; }
+        }
+
+        @media (max-width:900px){
+            .hamburger{ display:flex; }
+            .nav-menu{
+                display:none !important;
+                flex-direction:column;
+                gap:10px;
+                position:fixed;
+                top:90px;
+                left:50%;
+                transform:translateX(-50%);
+                width:86%;
+                max-height:calc(100vh - 170px);
+                padding:12px 16px 120px 16px; 
+                background:rgba(26,35,126,0.94);
+                backdrop-filter:blur(6px);
+                border-radius:12px;
+                box-shadow:0 8px 32px rgba(0,0,0,0.45);
+                overflow-y:auto;
+                -webkit-overflow-scrolling:touch;
+                touch-action:pan-y;
+                overscroll-behavior: contain;
+                white-space:normal;
+                scrollbar-width:thin;
+                scrollbar-color:#1976d2 rgba(0,0,0,0.1);
+                z-index:9999;
+                pointer-events:auto;
+            }
+            .nav-menu.show{ display:flex !important; }
+            .nav-menu li{ margin:10px 0; text-align:center; }
+            .nav-menu::-webkit-scrollbar{ height:8px; }
+            .nav-menu::-webkit-scrollbar-thumb{ background:#1976d2; border-radius:4px; }
+            .header-left{ flex:1; min-width:0; justify-content:flex-start; align-items:center; }
+            .hamburger{ margin-left:auto; }
+            .avatar-img{ width:40px; height:40px; }
+            .title-badge{ height:26px; max-width:55%; }
+        }
+    </style>
+    <style>
+        .content-container{ padding: 100px 8vw 120px 8vw; box-sizing: border-box; min-height: calc(100vh - 200px); }
+        /* 确保内容不会被固定头部/页脚遮挡，且滚动体验平滑 */
+        html, body{ scroll-behavior: smooth; }
+        @supports (position: sticky) {
+            .content-container{ padding-top: calc(80px + 28px); padding-bottom: calc(60px + 28px); }
+        }
+        .declaration{ max-width: 980px; margin: 0 auto; background: rgba(255,255,255,0.03); padding: 36px; border-radius: 12px; box-shadow: 0 8px 40px rgba(0,0,0,0.6); color: #e6fff2; line-height: 1.9; }
+    .declaration-title{ font-size: 28px; color: #00ff88; margin: 0 0 18px 0; text-shadow:0 0 8px rgba(0,255,136,0.25); text-align:center; }
+    .declaration p{ font-size:16px; margin: 12px 0; color: #dfffe6; text-indent:2em; }
+    .declaration ol{ margin-left: 20px; color: #dfffe6; }
+    .declaration li{ margin: 8px 0; text-indent:2em; }
+        .declaration .caption{ margin-top:18px; font-size:13px; color:#9fffcf; text-align:right; text-indent:0; }
+        .manual-list{ margin-top:8px; }
+        .manual-item{ margin: 10px 0; text-indent:2em; line-height:1.9; }
+        @media (max-width:900px){ .content-container{ padding: 90px 4vw 100px 4vw; } .declaration{ padding:20px; } .declaration-title{ font-size:22px; } }
+    </style>
+    <style>
+        @media (max-width:900px){
+            .nav-menu{ display:none !important; }
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="header-left">
+        
+            <img src="images\A5.png" alt="头像" class="avatar-img">
+            <button class="hamburger" id="hamburgerBtn" aria-label="菜单">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        <nav>
+            <ul class="nav-menu" id="navMenu">
+                <li><a class="capsule-btn" href="index.html">网站主页</a></li>
+                <li><a class="capsule-btn" href="statement.html">重要申明</a></li>
+                <li><a class="capsule-btn" href="public.html">公安专栏</a></li>
+                <li><a class="capsule-btn" href="procuratorate.html">检察专栏</a></li>
+                <li><a class="capsule-btn" href="court.html">法院专栏</a></li>
+                <li><a class="capsule-btn" href="interview.html">信访专栏</a></li>
+                <li><a class="capsule-btn" href="inspection.html">巡视专栏</a></li>
+                <li><a class="capsule-btn" href="law.html">法规专栏</a></li>
+                <li><a class="capsule-btn" href="webmaster.html">站长动态</a></li>
+                <li><a class="capsule-btn" href="contact.html">联系站长</a></li>
+            </ul>
+        </nav>
+    </div>
+    </div>
+    <div class="header-right">
+        <div id="dynamic-clock" class="dynamic-clock" aria-live="polite">正在加载时间...</div>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var hamburger = document.getElementById('hamburgerBtn');
+        var navMenu = document.getElementById('navMenu');
+        var placeholder = document.createElement('div');
+        placeholder.style.display = 'none';
+        navMenu.parentNode.insertBefore(placeholder, navMenu.nextSibling);
+
+      navMenu.classList.remove('show');
+      try { console.info('navMenu items count:', navMenu.querySelectorAll('li').length);
+          console.info(Array.from(navMenu.querySelectorAll('li a')).map(a=>a.textContent.trim())); } catch(e) {}
+        if (window.innerWidth <= 900) {
+            navMenu.style.display = 'none';
+        }
+
+        var movedToBody = false;
+
+        hamburger.addEventListener('click', function() {
+            var isShown = navMenu.classList.toggle('show');
+            navMenu.style.display = '';
+
+            if (isShown) {
+                if (!movedToBody) {
+                    document.body.appendChild(navMenu);
+                    movedToBody = true;
+                }
+                setTimeout(function() { navMenu.scrollTop = 0; }, 50);
+            } else {
+                if (movedToBody) {
+                    placeholder.parentNode.insertBefore(navMenu, placeholder.nextSibling);
+                    movedToBody = false;
+                }
+            }
+        });
+    });
+    </script>
+</header>
+
+<main class="content-container" role="main" aria-labelledby="declaration-title">
+    <section class="declaration" id="declaration" aria-label="站长动态">
+        <h1 id="declaration-title" class="declaration-title">站长动态</h1>
+
+    <h3>一、2018年站长动态</h3>
+
+   <div class="manual-list">
+            <p class="manual-item">1. 2018年11月20日，站长购买了一个OPPO A5手机；</p>
+            <p class="manual-item">2. 2018年11月20日16时23分09秒，站长激活了新购的OPPO A5手机；</p>
+            <p class="manual-item">3. 2018年11月20日18时37分09秒，站长实名注册OPPO账户，账户ID为00312627908；</p>
+            <p class="manual-item">4. 2018年11月30日，站长用OPPO A5手机拍摄了数张照片并备份到了OPPO云相册；</p>
+            <p class="manual-item">5. 2018年12月3日，站长用OPPO A5手机拍摄了数张照片并备份到了OPPO云相册；</p>
+            <p class="manual-item">6. 2018年12月9日，站长用OPPO A5手机拍摄了数张照片并备份到了OPPO云相册。</p>
+        </div>
+
+    <h3>二、2019年站长动态</h3>
+
+   <div class="manual-list">
+            <p class="manual-item">1. 2019年1月20日，站长被人言语激怒，情绪失控殴打路人被送派出所后遭持械暴力致伤做了不利供述，滞留超24小时后于次日22时50分被送达送看守所羁押接着被指控抢劫OPPO A5手机；</p>
+            <p class="manual-item">2. 2019年3月20日，站长还没反应过来就稀里糊涂签了侦查终结告知书；</p>
+            <p class="manual-item">3. 2019年3月27日，站长被贵州省贵阳市云岩区人民检察员首次提讯，因被指控犯抢劫罪与客观事实不符，站长没有任何签字；</p>
+            <p class="manual-item">4. 2019年4月3日，站长第二次被贵州省贵阳市云岩区人民检察员提讯，告知提讯办理人情况后，对方注明了不是抢劫是打人后，站长才签了字；</p>
+            <p class="manual-item">5. 2019年6月14日，站长被贵州省贵阳市云岩区人民法院书记员马晓捷在看守所一次性签发量刑建议书、换押证、起诉书副本，并且还是以抢劫罪指控站长，站长最终拒签、拒收，并且从2019年4月3日至2019年6月14日，站长在看守所没有收到任何司法机关的任何消息，对案件具体进展毫无所知，也无任何退侦或延期的音讯，根据《中华人民共和国刑事诉讼法》第一百七十二条、《公安机关办理刑事案件程序规定》（公安部令第127号）第二百七十九条规定，案件疑似超期起诉，因此站长的做法合法正当；</p>
+            <p class="manual-item">6. 2019年7月2日，站长在无起诉书的情况下，被押送至贵州省贵阳市云岩区人民法院接受审理。当天庭审现场站长就案件是否存在延期审查或退侦情况向公诉人周江红发问，得到对方肯定回答是“没有”；</p>
+            <p class="manual-item">7. 2019年8月1日，站长在看守所收到马晓捷签发的（2019）黔0103刑初821号刑事判决书，后来发现其主文部分存在“王UI平”的异常字符；</p>
+            <p class="manual-item">8. 2019年8月11日，站长通过看守所监管人员递交了自书上诉状；</p>
+            <p class="manual-item">9. 2019年8月20日，站长在看守所被贵州省贵阳市中级人民法院提讯一次；</p>
+            <p class="manual-item">10. 2019年8月26日，站长在看守所被贵州省贵阳市中级人民法院第二次提讯，对方给站长签发了（2019）黔01刑终667号刑事判决书，到此案件宣告结案；</p>
+            <p class="manual-item">11. 2019年10月14日，站长被正式执行刑罚，出看守所时核对刑期时，监狱警方的核对单上显示站长的刑期为11年有期徒刑，与判决书、裁定书记录的四年有期徒刑严重不符，幸好站长没把判决、裁定书遗失，否则后果不看设想；</p>
+            <p class="manual-item">12. 2023年1月20日，站长服刑结束正式出狱，因不认罪未获减刑，硬坐四年有期徒刑。</p>
+        </div>
+        
+    <h3>三、2024年站长动态</h3>
+
+   <div class="manual-list">
+            <p class="manual-item">1. 2024年11月4日，站长在贵州省贵阳市中级人民法院档案室发现附卷的裁定书案号与此前站长所持（2019）黔01刑终667号刑事裁定书案号不符，附卷裁定书变为（2019）黔01刑终669号；</p>
+            <p class="manual-item">2. 2024年11月5日，站长在贵州省贵阳市云岩区人民法院档案室拷贝到名为“正卷1”的卷宗材料共计56张JPG图片，之后发现起诉书有退侦记录与2019年7月2日公诉人在庭审中“没有退侦”的回答明显不符，存在被事后篡改的嫌疑；</p>
+            <p class="manual-item">3. 2024年11月7日，站长第一次打通贵州省贵阳市中级人民法院法官林筑萍的电话，对方听闻案号问题很快挂断电话；</p>
+            <p class="manual-item">4. 2024年11月8日，站长接到贵州省贵阳市中级人民法院法官林筑萍的电，对方显示误导站长作为被告当事人无权查阅卷宗后又以“根据现有规定”站长本人是可查阅卷宗的，接着没有对为何引起案号混乱的原因和具体经过进行合理解释，而是要求站长前往该法院领取当日制作的更正裁定书；</p>
+            <p class="manual-item">5. 2024年11月13日，站长前往贵州省贵阳市云岩区毓秀路派出所领取被扣留的随身物品，但所内工作人员称只有一张银行卡登记，并且无法找到，最终什么都没领到，下午走访贵阳市公安局云岩分局后再到毓秀路派出所欲查本案材料核实情况别拒，但与该所相关人员对话内容已进行了录音；</p>
+            <p class="manual-item">6. 2024年11月13日，站长前往贵州省贵阳市公安局云岩分局对毓秀路派出所的情况进行了举报，接访的督察人员警号为041661；</p>
+            <p class="manual-item">7. 2024年11月28日，站长发现此前拷贝的一审卷宗资料缺失的大量正卷内容，所以再次前往贵州省贵阳市云岩区人民法院档案室拷贝缺失资料，但最终被拒，因此站长已对对话内容进行录音取证；</p>
+            <p class="manual-item">8. 2024年12月12日，站长接到贵州省贵阳市中级人民法院就此前站长通过人民法院违纪违法举报平台的举报事项进行了电话回访，但未解决实质性问题；</p>
+            <p class="manual-item">9. 2024年12月12日，站长接到贵州省贵阳市云岩区人民检察院周江红就此前通过12309视频约访的事项采取电话回访，电话中周江红称退侦情况以一审法院档案室附卷的起诉书为准，并将所有过错归咎于站长拒签、拒收起诉书，而不反思超期起诉的问题根源；</p>
+            <p class="manual-item">10. 2024年11月14日，；站长收到贵州省贵阳市中级人民法院法官林筑萍寄来的（2019）黔01刑终669号刑事裁定书【注落款日期是2024年11月8日，林筑萍所谓的更正裁定书，但是未载明作出裁定的具体法律依据，明显违反《最高人民法院关于裁判文书引用法律、法规等规范性法律文件的规定》（法释〔2009〕14号）、《法官行为规范》（法发〔2010〕54号）第五十三条；《最高人民法院关于在同一案件多个裁判文书上规范使用案号有关事项的通知》（法〔2016〕27号）规定】</p>
+            <p class="manual-item">11. 2024年12月16日，站长因2024年12月6日通过贵州公安APP对自己被诬陷的事由报了警，要求立案处理，后被转至毓秀路派出所后，该所要求前往核实情况。站长抵达该所后被采取了询问措施，并做了笔录，但站长要求对方开具询问笔录被拒。之前对方开具了报案回执，站长回途时发现报案人联系电话和现住地址被篡改，疑似通过此操作规避上级联系到站长将该所的所有问题揭露，从而设法阻碍问题的解决；</p>
+            <p class="manual-item">12. 2024年12月18日，站长早上接到贵州省贵阳市云岩区毓秀路派出所来电称随身物品和实际办案人员的问题能解决，要求前往该所。待站在抵达该所后，致电人员始终未露面，另一工作人员接待后接了一个电话后便称问题已经解决即打发了站长，仔细回想该行为属典型的形式主义问题，让站长白跑一趟不过是掩饰其在处理问题的表象；</p>
+            <p class="manual-item">13. 2024年12月18日，站长前往贵州省贵阳市公安局云岩分局督察了解2024年11月13日举报的问题处理情况，并提交新证据再次对未实际送达刑事拘留通知书、逮捕通知书等问题进行了举报，但该督察选择性地接受材料，不过站长也对对话经过进行了录音取证；</p>
+            <p class="manual-item">14. 2024年12月25日，站长致电贵州省贵阳市中级人民法院林筑萍对此2024年11月14日收到的所谓（2019）黔01刑终669号刑事裁定书【注：落款日期是2024年11月8日，林筑萍所谓的更正裁定书】无载明作出裁定是法律依据问题、未实际送达所谓2019年8月26日制作的（2019）黔01刑终669号刑事裁定书问题等进行了沟通，遭到对方一番敷衍和搪塞，没有实质性解决问题；</p>
+            <p class="manual-item">15. 2024年12月31日，站长接到贵州省贵阳市公安局云岩分局督察（警号：041661）来电，就此前走访和举报的事项进行答复，但无实质性解决问题；</p>
+        </div>
+    <h3>四、2025年站长动态</h3>
+
+   <div class="manual-list">
+            <p class="manual-item">1. 2025年8月26日，站长再次前往贵州省贵阳市云岩区人民法院档案室，寻求拷贝完整正卷资料，档案工作人员给站长打印了一份（2019黔）0103刑初821号刑事判决书加盖了档案证明专用章，站长发现未达逾期目的。要求出具所以正卷资料，对方给了个一个叫田瑶的人，要求电话与天耀沟通。站长打通田瑶电话后，对方以先留联系方式，之后会回电为由结束对话，待下午站长致电田瑶时，对方称要找之前的档案工作人员获取即结束对话；</p>
+            <p class="manual-item">2. 2025年8月26日中午，站长就未实际送达刑事拘留通知书和逮捕通知书问题前往贵州省贵阳市毓秀路派出所寻求解决，该所工作人员先是承诺给出两份通知书，等20分钟后，对方拿出一份A4纸打印的材料对站长说已经通过邮政寄送并且有邮戳，但是站长请求让看清材料内容以核实是否确实通过邮政邮寄和确认邮政标识，然而对方只是很快在站长眼前晃了一下，未让站长看清，称属内容材料无法向当事人提供，要求站长找所里的档案室人员获取信息，但档案室回应站长需找办案人，这样像踢皮球似的，最终一无所获，不过站长已作好录音取证操作；</p>
+            <p class="manual-item">3. 2025年8月27日，站长再次抵达贵州省贵阳市云岩区人民法院档案室，对方先是提供了55张JPG格式的正卷材料，与此前2024年11月5日拷贝完全一致，并且对比2024年11月5日拷贝的材料还少了一张JPG图片。站长因材料无档案室的电子签章无证明效力，要求加电子签章，对方要求再提供一张空白光盘后让站长在大厅等候，过了20分钟后对方告知制作电子签章需一个一个上传花费时间较久，让站长先留下联系方式，制作完毕会电话联系。  </p>
+            <p class="manual-item">4. 2025年8月27日下午，站长到达贵州省贵阳市中级人民法院档案室拷贝到一个PDF文件，名为《（2019）黔01刑终669号.pdf》,回来后发现该文件是一个集成的PDF文件，所有法院档案室的电子证明专用章，但是无法确认和核实每个电子材料的具体形成时间，因为从该PDF只能查到形成时间是2019年8月27日，这样每份电子材料的具体形成时间将无法确认，真实性、完整性无法得到保障；</p>
+            <p class="manual-item">5. 2025年9月2日，站长前往贵州省贵阳市云岩区人民法院档案室获取加电子证明专用章的光盘，但后来发现为一个集成的PDF文件，名为“（2019）黔0103刑初821号.pdf”,存在的问题依然是确认关键正卷卷宗材料，并且无法确认每个电子卷宗的具体形成时间 ，是否与实际案件办理时间同步形成的问题无法解决；另外站长请求对方提供缺失的正卷材料时，对方以黔高法〔2021〕69号拒绝提供，并提供了一份摘选的2021〕69号部分内容给站长，待站长回来后经多方公开渠道查询该文件，但均无法查到，甚至通过司法部APP寻求律师帮忙也是同样的结果，说明该文件未公开，但档案工作人员以此限制站长的正当查阅权，疑似该摘选内容存在问题，有被篡改以达到限制当事人正当权利行使的不法目的；最后站长在贵州省高级人民法院官网获取该院新闻发言人的联系电话和邮箱，但是电话一直打不通，最终给该邮箱发送了邮件以求核实情况，但一直未获回复；</p>
+            <p class="manual-item">6. 2025年9月13日，站长对所有从一、二法院获取的正卷资料进行了SHA256、SM3哈希值校验并进行了RSA4096GPG签名，同时把签名的GPG公钥上传至https://keyserver.ubuntu.com密钥服务器方便相关方进行验签，接着对涉密或不宜公开材料进行了RSA4096GPG签名并加密，最终于2025年9月13日 10:05:56 完成了提交并推送至github等平台，以便达到上链固化的效果，github的仓库地址为  https://github.com/gzcase20190120/gzcase20190120.github.io </p>
+            <p class="manual-item">7. 2025年9月18日，站长再次前往贵州省贵阳市云岩区人民法院档案室要求对方提供缺失的正卷材料，并申明需原始材料，对方嘴上答应，但回来后站长发现获取的任然是一个集成的PDF文件，即“（2019）黔0103刑初821号.pdf”,最后站长对该材料进行了SHA256和SM3哈希值校验，发现与之前获取的“（2019）黔0103刑初821号.pdf”完全不符，说明已经被篡改，仔细查阅其内容，新增的材料无补卷标注，无补卷审批文号，所有材料均无骑缝章。</p>
+            <p class="manual-item">8. 2025年9月20日，站长前往案发地点调察周边的监控探头方位并拍照记录，以便反驳相关方提供案发经过的视频存在的问题。</p>
+        </div>
+</section>
+</main>
+
+<footer class="footer">
+    <div class="footer-center">
+        <span>© 2025 王贵平保留所有权</span>
+    </div>
+</footer>
+
+<script>
+    (function(){
+        function pad(n){ return n<10?('0'+n):n; }
+        function weekdayName(d){ return ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'][d]; }
+        function formatClock(date){
+            return date.getFullYear() + '年' + (date.getMonth()+1) + '月' + date.getDate() + '日 ' + weekdayName(date.getDay()) + ' ' + pad(date.getHours()) + ':' + pad(date.getMinutes()) + ':' + pad(date.getSeconds());
+        }
+
+        var el = document.getElementById('dynamic-clock');
+        if(!el) return;
+        function update(){ el.textContent = formatClock(new Date()); }
+        update();
+        var timer = setInterval(update,1000);
+        window.dynamicClock = { stop: function(){ clearInterval(timer); }, start: function(){ timer = setInterval(update,1000); } };
+    })();
+</script>
+<script>
+(function(){
+    var svgBox = document.getElementById('floating-svg-container');
+    if(!svgBox) return;
+    var baseLeft = 5; 
+    var amplitude = 3; 
+    var speed = 0.7; 
+    function animate(){
+        var t = Date.now() * 0.001 * speed;
+        var offset = Math.sin(t) * amplitude;
+        svgBox.style.left = (baseLeft + offset) + 'vw';
+    }
+    setInterval(animate, 30);
+})();
+</script>
+</body>
+</html>

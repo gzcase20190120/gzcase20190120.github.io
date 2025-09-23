@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?8ce9bfe8990697d49b53155401e40598";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <link rel="icon" type="image/png" href="images\A5.png">
+    
+    <title>联系站长</title>
+    <style>
+        body {
+            margin: 0;
+            overflow-y: auto;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            cursor: default;
+            font-family: 'Arial', sans-serif;
+            -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+        }
+
+        canvas { display: block; }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 3000;
+        }
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 4px;
+            margin: 4px 0;
+            background: #2196f3;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        .header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 80px;
+            background: linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(26,26,46,0.9) 50%, rgba(22,33,62,0.9) 100%);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0,255,136,0.3);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px; 
+        }
+    .header-left { display: flex; align-items: center; gap: 12px; }
+
+        .logo { font-size: 24px; font-weight: bold; color: #00ff88; text-shadow: 0 0 10px rgba(0,255,136,0.5); }
+
+        .capsule-btn {
+            display: inline-block; padding: 0.35em 1.2em; border-radius: 999px;
+            background: linear-gradient(90deg,#1976d2 0%,#2196f3 100%);
+            color:#f5f5f5; font-weight:500; font-size:15px; text-decoration:none;
+            box-shadow:0 2px 6px rgba(25,118,210,0.10); border:none; transition: background .3s, box-shadow .3s, transform .2s;
+            cursor:pointer; outline:none; white-space:nowrap;
+        }
+        .capsule-btn:hover,.capsule-btn:focus{ background:linear-gradient(90deg,#1565c0 0%,#1976d2 100%); box-shadow:0 4px 12px rgba(25,118,210,0.18); transform:translateY(-2px) scale(1.04); }
+
+        .nav-menu {
+            display:flex; gap:18px; list-style:none; margin:0; padding:0; justify-content:center; width:auto; 
+        }
+        .nav-menu li { flex:0 0 auto; }
+        .nav-menu li a { color:white; text-decoration:none; font-size:16px; transition:color .3s; position:relative; }
+        .nav-menu li a:hover{ color:#00ff88; }
+        .nav-menu li a::after{ content:''; position:absolute; bottom:-5px; left:0; width:0; height:2px; background:#00ff88; transition:width .3s; }
+        .nav-menu li a:hover::after{ width:100%; }
+
+        .nav-menu::-webkit-scrollbar{ height:6px; }
+        .nav-menu::-webkit-scrollbar-thumb{ background:#1976d2; border-radius:3px; }
+        .nav-menu::-webkit-scrollbar-track{ background:#eee; }
+
+        .status-indicator{ display:flex; align-items:center; gap:8px; color:#00ff88; font-size:14px; }
+        .status-dot{ width:8px; height:8px; background:#00ff88; border-radius:50%; animation:pulse 2s infinite; }
+        @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:0.5;} }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(26,26,46,0.9) 50%, rgba(22,33,62,0.9) 100%);
+            backdrop-filter: blur(15px);
+            border-top: 1px solid rgba(0,255,136,0.3);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 30px;
+        }
+        .footer-center {
+            color: #fff !important;
+            font-size: 18px !important;
+            font-weight: 700 !important;
+            text-align: center !important;
+            text-shadow: 0 0 12px #00ff88, 0 0 4px #fff, 0 2px 12px rgba(0,255,136,0.35);
+            letter-spacing: 2px !important;
+            width: 100%;
+            text-align: center;
+        }
+
+        .social-links a{ color:#fff !important; text-shadow:0 0 8px #00ff88,0 0 2px #fff; }
+        .social-links a:hover{ color:#00ff88 !important; text-shadow:0 0 12px #00ff88,0 0 4px #fff; }
+
+    .avatar-img{ width:48px; height:48px; border-radius:50%; box-shadow:0 2px 8px rgba(25,118,210,0.15); margin-right:8px; object-fit:cover; vertical-align:middle; flex-shrink:0; }
+    .avatar-name{ font-size:22px; font-weight:bold; color:#00ff88; margin-right:12px; letter-spacing:2px; text-shadow:0 0 8px #00ff88,0 0 2px #fff; }
+    .title-badge{ height:32px; width:auto; margin-right:8px; vertical-align:middle; display:inline-block; max-width:60%; overflow:visible; }
+
+        .header-right{ position:fixed; right:12px; top:calc(80px + 12px); display:flex; align-items:center; gap:12px; z-index:2500; pointer-events:auto; }
+        .dynamic-clock{ color:#bfffd6; font-weight:600; font-size:14px; padding:6px 10px; border-radius:999px; background:rgba(0,0,0,0.18); box-shadow:0 2px 8px rgba(0,255,136,0.06); text-shadow:0 0 6px rgba(0,255,136,0.15); white-space:nowrap; }
+
+        @media (max-width:900px){
+            .header-right{ display:none; }
+        }
+
+        @media (max-width:900px){
+            .hamburger{ display:flex; }
+            .nav-menu{
+                display:none !important;
+                flex-direction:column;
+                gap:10px;
+                position:fixed;
+                top:90px;
+                left:50%;
+                transform:translateX(-50%);
+                width:86%;
+                max-height:calc(100vh - 170px);
+                padding:12px 16px 120px 16px; 
+                background:rgba(26,35,126,0.94);
+                backdrop-filter:blur(6px);
+                border-radius:12px;
+                box-shadow:0 8px 32px rgba(0,0,0,0.45);
+                overflow-y:auto;
+                -webkit-overflow-scrolling:touch;
+                touch-action:pan-y;
+                overscroll-behavior: contain;
+                white-space:normal;
+                scrollbar-width:thin;
+                scrollbar-color:#1976d2 rgba(0,0,0,0.1);
+                z-index:9999;
+                pointer-events:auto;
+            }
+            .nav-menu.show{ display:flex !important; }
+            .nav-menu li{ margin:10px 0; text-align:center; }
+            .nav-menu::-webkit-scrollbar{ height:8px; }
+            .nav-menu::-webkit-scrollbar-thumb{ background:#1976d2; border-radius:4px; }
+            .header-left{ flex:1; min-width:0; justify-content:flex-start; align-items:center; }
+            .hamburger{ margin-left:auto; }
+            .avatar-img{ width:40px; height:40px; }
+            .title-badge{ height:26px; max-width:55%; }
+        }
+    </style>
+    <style>
+        .content-container{ padding: 100px 8vw 120px 8vw; box-sizing: border-box; min-height: calc(100vh - 200px); }
+        /* 确保内容不会被固定头部/页脚遮挡，且滚动体验平滑 */
+        html, body{ scroll-behavior: smooth; }
+        @supports (position: sticky) {
+            .content-container{ padding-top: calc(80px + 28px); padding-bottom: calc(60px + 28px); }
+        }
+        .declaration{ max-width: 980px; margin: 0 auto; background: rgba(255,255,255,0.03); padding: 36px; border-radius: 12px; box-shadow: 0 8px 40px rgba(0,0,0,0.6); color: #e6fff2; line-height: 1.9; }
+    .declaration-title{ font-size: 28px; color: #00ff88; margin: 0 0 18px 0; text-shadow:0 0 8px rgba(0,255,136,0.25); text-align:center; }
+    .declaration p{ font-size:16px; margin: 12px 0; color: #dfffe6; text-indent:2em; }
+    .declaration ol{ margin-left: 20px; color: #dfffe6; }
+    .declaration li{ margin: 8px 0; text-indent:2em; }
+        .declaration .caption{ margin-top:18px; font-size:13px; color:#9fffcf; text-align:right; text-indent:0; }
+        .manual-list{ margin-top:8px; }
+        .manual-item{ margin: 10px 0; text-indent:2em; line-height:1.9; }
+        @media (max-width:900px){ .content-container{ padding: 90px 4vw 100px 4vw; } .declaration{ padding:20px; } .declaration-title{ font-size:22px; } }
+    </style>
+    <style>
+        @media (max-width:900px){
+            .nav-menu{ display:none !important; }
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="header-left">
+        
+            <img src="images\A5.png" alt="头像" class="avatar-img">
+            <button class="hamburger" id="hamburgerBtn" aria-label="菜单">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        <nav>
+            <ul class="nav-menu" id="navMenu">
+                <li><a class="capsule-btn" href="index.html">网站主页</a></li>
+                <li><a class="capsule-btn" href="statement.html">重要申明</a></li>
+                <li><a class="capsule-btn" href="public.html">公安专栏</a></li>
+                <li><a class="capsule-btn" href="procuratorate.html">检察专栏</a></li>
+                <li><a class="capsule-btn" href="court.html">法院专栏</a></li>
+                <li><a class="capsule-btn" href="interview.html">信访专栏</a></li>
+                <li><a class="capsule-btn" href="inspection.html">巡视专栏</a></li>
+                <li><a class="capsule-btn" href="law.html">法规专栏</a></li>
+                <li><a class="capsule-btn" href="webmaster.html">站长动态</a></li>
+                <li><a class="capsule-btn" href="contact.html">联系站长</a></li>
+            </ul>
+        </nav>
+    </div>
+    </div>
+    <div class="header-right">
+        <div id="dynamic-clock" class="dynamic-clock" aria-live="polite">正在加载时间...</div>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var hamburger = document.getElementById('hamburgerBtn');
+        var navMenu = document.getElementById('navMenu');
+        var placeholder = document.createElement('div');
+        placeholder.style.display = 'none';
+        navMenu.parentNode.insertBefore(placeholder, navMenu.nextSibling);
+
+      navMenu.classList.remove('show');
+      try { console.info('navMenu items count:', navMenu.querySelectorAll('li').length);
+          console.info(Array.from(navMenu.querySelectorAll('li a')).map(a=>a.textContent.trim())); } catch(e) {}
+        if (window.innerWidth <= 900) {
+            navMenu.style.display = 'none';
+        }
+
+        var movedToBody = false;
+
+        hamburger.addEventListener('click', function() {
+            var isShown = navMenu.classList.toggle('show');
+            navMenu.style.display = '';
+
+            if (isShown) {
+                if (!movedToBody) {
+                    document.body.appendChild(navMenu);
+                    movedToBody = true;
+                }
+                setTimeout(function() { navMenu.scrollTop = 0; }, 50);
+            } else {
+                if (movedToBody) {
+                    placeholder.parentNode.insertBefore(navMenu, placeholder.nextSibling);
+                    movedToBody = false;
+                }
+            }
+        });
+    });
+    </script>
+</header>
+
+<main class="content-container" role="main" aria-labelledby="declaration-title">
+    <section class="declaration" id="declaration" aria-label="联系站长">
+        <h1 id="declaration-title" class="declaration-title">联系站长</h1>
+
+    <h3>一、联系方式</h3>
+
+   <div class="manual-list">
+            <p class="manual-item">联系人：王贵平</p>
+            <p class="manual-item">邮箱：case20190120@outlook.com</p>
+            <p class="manual-item">如有获取联系电话的需求，请来信至以上邮箱后，待回复后即可解密以下信息，从而获取联系电话。</p>
+            <p class="manual-item">联系电话：</p>
+            <p class="manual-item">-----BEGIN PGP MESSAGE-----
+
+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
+oymUiALFWdbDfX8Y+mkTALl2BUSyCuw2DlZx7w==
+=Gqws
+-----END PGP MESSAGE-----
+</p>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="footer-center">
+        <span>© 2025 王贵平保留所有权</span>
+    </div>
+</footer>
+
+<script>
+    (function(){
+        function pad(n){ return n<10?('0'+n):n; }
+        function weekdayName(d){ return ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'][d]; }
+        function formatClock(date){
+            return date.getFullYear() + '年' + (date.getMonth()+1) + '月' + date.getDate() + '日 ' + weekdayName(date.getDay()) + ' ' + pad(date.getHours()) + ':' + pad(date.getMinutes()) + ':' + pad(date.getSeconds());
+        }
+
+        var el = document.getElementById('dynamic-clock');
+        if(!el) return;
+        function update(){ el.textContent = formatClock(new Date()); }
+        update();
+        var timer = setInterval(update,1000);
+        window.dynamicClock = { stop: function(){ clearInterval(timer); }, start: function(){ timer = setInterval(update,1000); } };
+    })();
+</script>
+<script>
+(function(){
+    var svgBox = document.getElementById('floating-svg-container');
+    if(!svgBox) return;
+    var baseLeft = 5; 
+    var amplitude = 3; 
+    var speed = 0.7; 
+    function animate(){
+        var t = Date.now() * 0.001 * speed;
+        var offset = Math.sin(t) * amplitude;
+        svgBox.style.left = (baseLeft + offset) + 'vw';
+    }
+    setInterval(animate, 30);
+})();
+</script>
+</body>
+</html>

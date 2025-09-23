@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?8ce9bfe8990697d49b53155401e40598";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <link rel="icon" type="image/png" href="images\A5.png">
+    
+    <title>重要申明</title>
+    <style>
+        body {
+            margin: 0;
+            overflow-y: auto; /* 允许垂直滚动，便于浏览长文 */
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            cursor: default;
+            font-family: 'Arial', sans-serif;
+            -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+        }
+
+        canvas { display: block; }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 3000;
+        }
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 4px;
+            margin: 4px 0;
+            background: #2196f3;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        .header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 80px;
+            background: linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(26,26,46,0.9) 50%, rgba(22,33,62,0.9) 100%);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0,255,136,0.3);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px; 
+        }
+    .header-left { display: flex; align-items: center; gap: 12px; }
+
+        .logo { font-size: 24px; font-weight: bold; color: #00ff88; text-shadow: 0 0 10px rgba(0,255,136,0.5); }
+
+        .capsule-btn {
+            display: inline-block; padding: 0.35em 1.2em; border-radius: 999px;
+            background: linear-gradient(90deg,#1976d2 0%,#2196f3 100%);
+            color:#f5f5f5; font-weight:500; font-size:15px; text-decoration:none;
+            box-shadow:0 2px 6px rgba(25,118,210,0.10); border:none; transition: background .3s, box-shadow .3s, transform .2s;
+            cursor:pointer; outline:none; white-space:nowrap;
+        }
+        .capsule-btn:hover,.capsule-btn:focus{ background:linear-gradient(90deg,#1565c0 0%,#1976d2 100%); box-shadow:0 4px 12px rgba(25,118,210,0.18); transform:translateY(-2px) scale(1.04); }
+
+        .nav-menu {
+            display:flex; gap:18px; list-style:none; margin:0; padding:0; justify-content:center; width:auto; 
+        }
+        .nav-menu li { flex:0 0 auto; }
+        .nav-menu li a { color:white; text-decoration:none; font-size:16px; transition:color .3s; position:relative; }
+        .nav-menu li a:hover{ color:#00ff88; }
+        .nav-menu li a::after{ content:''; position:absolute; bottom:-5px; left:0; width:0; height:2px; background:#00ff88; transition:width .3s; }
+        .nav-menu li a:hover::after{ width:100%; }
+
+        .nav-menu::-webkit-scrollbar{ height:6px; }
+        .nav-menu::-webkit-scrollbar-thumb{ background:#1976d2; border-radius:3px; }
+        .nav-menu::-webkit-scrollbar-track{ background:#eee; }
+
+        .status-indicator{ display:flex; align-items:center; gap:8px; color:#00ff88; font-size:14px; }
+        .status-dot{ width:8px; height:8px; background:#00ff88; border-radius:50%; animation:pulse 2s infinite; }
+        @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:0.5;} }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(26,26,46,0.9) 50%, rgba(22,33,62,0.9) 100%);
+            backdrop-filter: blur(15px);
+            border-top: 1px solid rgba(0,255,136,0.3);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 30px;
+        }
+        .footer-center {
+            color: #fff !important;
+            font-size: 18px !important;
+            font-weight: 700 !important;
+            text-align: center !important;
+            text-shadow: 0 0 12px #00ff88, 0 0 4px #fff, 0 2px 12px rgba(0,255,136,0.35);
+            letter-spacing: 2px !important;
+            width: 100%;
+            text-align: center;
+        }
+
+        .social-links a{ color:#fff !important; text-shadow:0 0 8px #00ff88,0 0 2px #fff; }
+        .social-links a:hover{ color:#00ff88 !important; text-shadow:0 0 12px #00ff88,0 0 4px #fff; }
+
+    .avatar-img{ width:48px; height:48px; border-radius:50%; box-shadow:0 2px 8px rgba(25,118,210,0.15); margin-right:8px; object-fit:cover; vertical-align:middle; flex-shrink:0; }
+    .avatar-name{ font-size:22px; font-weight:bold; color:#00ff88; margin-right:12px; letter-spacing:2px; text-shadow:0 0 8px #00ff88,0 0 2px #fff; }
+    .title-badge{ height:32px; width:auto; margin-right:8px; vertical-align:middle; display:inline-block; max-width:60%; overflow:visible; }
+
+        .header-right{ position:fixed; right:12px; top:calc(80px + 12px); display:flex; align-items:center; gap:12px; z-index:2500; pointer-events:auto; }
+        .dynamic-clock{ color:#bfffd6; font-weight:600; font-size:14px; padding:6px 10px; border-radius:999px; background:rgba(0,0,0,0.18); box-shadow:0 2px 8px rgba(0,255,136,0.06); text-shadow:0 0 6px rgba(0,255,136,0.15); white-space:nowrap; }
+
+        @media (max-width:900px){
+            .header-right{ display:none; }
+        }
+
+        @media (max-width:900px){
+            .hamburger{ display:flex; }
+            .nav-menu{
+                display:none !important;
+                flex-direction:column;
+                gap:10px;
+                position:fixed;
+                top:90px;
+                left:50%;
+                transform:translateX(-50%);
+                width:86%;
+                max-height:calc(100vh - 170px);
+                padding:12px 16px 120px 16px; 
+                background:rgba(26,35,126,0.94);
+                backdrop-filter:blur(6px);
+                border-radius:12px;
+                box-shadow:0 8px 32px rgba(0,0,0,0.45);
+                overflow-y:auto;
+                -webkit-overflow-scrolling:touch;
+                touch-action:pan-y;
+                overscroll-behavior: contain;
+                white-space:normal;
+                scrollbar-width:thin;
+                scrollbar-color:#1976d2 rgba(0,0,0,0.1);
+                z-index:9999;
+                pointer-events:auto;
+            }
+            .nav-menu.show{ display:flex !important; }
+            .nav-menu li{ margin:10px 0; text-align:center; }
+            .nav-menu::-webkit-scrollbar{ height:8px; }
+            .nav-menu::-webkit-scrollbar-thumb{ background:#1976d2; border-radius:4px; }
+            .header-left{ flex:1; min-width:0; justify-content:flex-start; align-items:center; }
+            .hamburger{ margin-left:auto; }
+            .avatar-img{ width:40px; height:40px; }
+            .title-badge{ height:26px; max-width:55%; }
+        }
+    </style>
+    <style>
+        .content-container{ padding: 100px 8vw 120px 8vw; box-sizing: border-box; min-height: calc(100vh - 200px); }
+        /* 确保内容不会被固定头部/页脚遮挡，且滚动体验平滑 */
+        html, body{ scroll-behavior: smooth; }
+        @supports (position: sticky) {
+            .content-container{ padding-top: calc(80px + 28px); padding-bottom: calc(60px + 28px); }
+        }
+        .declaration{ max-width: 980px; margin: 0 auto; background: rgba(255,255,255,0.03); padding: 36px; border-radius: 12px; box-shadow: 0 8px 40px rgba(0,0,0,0.6); color: #e6fff2; line-height: 1.9; }
+    .declaration-title{ font-size: 28px; color: #00ff88; margin: 0 0 18px 0; text-shadow:0 0 8px rgba(0,255,136,0.25); text-align:center; }
+    .declaration p{ font-size:16px; margin: 12px 0; color: #dfffe6; text-indent:2em; }
+    .declaration ol{ margin-left: 20px; color: #dfffe6; }
+    .declaration li{ margin: 8px 0; text-indent:2em; }
+        .declaration .caption{ margin-top:18px; font-size:13px; color:#9fffcf; text-align:right; text-indent:0; }
+        .manual-list{ margin-top:8px; }
+        .manual-item{ margin: 10px 0; text-indent:2em; line-height:1.9; }
+        @media (max-width:900px){ .content-container{ padding: 90px 4vw 100px 4vw; } .declaration{ padding:20px; } .declaration-title{ font-size:22px; } }
+    </style>
+    <style>
+        @media (max-width:900px){
+            .nav-menu{ display:none !important; }
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="header-left">
+        
+            <img src="images\A5.png" alt="头像" class="avatar-img">
+            <button class="hamburger" id="hamburgerBtn" aria-label="菜单">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        <nav>
+            <ul class="nav-menu" id="navMenu">
+                <li><a class="capsule-btn" href="index.html">网站主页</a></li>
+                <li><a class="capsule-btn" href="statement.html">重要申明</a></li>
+                <li><a class="capsule-btn" href="public.html">公安专栏</a></li>
+                <li><a class="capsule-btn" href="procuratorate.html">检察专栏</a></li>
+                <li><a class="capsule-btn" href="court.html">法院专栏</a></li>
+                <li><a class="capsule-btn" href="interview.html">信访专栏</a></li>
+                <li><a class="capsule-btn" href="inspection.html">巡视专栏</a></li>
+                <li><a class="capsule-btn" href="law.html">法规专栏</a></li>
+                <li><a class="capsule-btn" href="webmaster.html">站长动态</a></li>
+                <li><a class="capsule-btn" href="contact.html">联系站长</a></li>
+            </ul>
+        </nav>
+    </div>
+    </div>
+    <div class="header-right">
+        <div id="dynamic-clock" class="dynamic-clock" aria-live="polite">正在加载时间...</div>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var hamburger = document.getElementById('hamburgerBtn');
+        var navMenu = document.getElementById('navMenu');
+        var placeholder = document.createElement('div');
+        placeholder.style.display = 'none';
+        navMenu.parentNode.insertBefore(placeholder, navMenu.nextSibling);
+
+      navMenu.classList.remove('show');
+      try { console.info('navMenu items count:', navMenu.querySelectorAll('li').length);
+          console.info(Array.from(navMenu.querySelectorAll('li a')).map(a=>a.textContent.trim())); } catch(e) {}
+        if (window.innerWidth <= 900) {
+            navMenu.style.display = 'none';
+        }
+
+        var movedToBody = false;
+
+        hamburger.addEventListener('click', function() {
+            var isShown = navMenu.classList.toggle('show');
+            navMenu.style.display = '';
+
+            if (isShown) {
+                if (!movedToBody) {
+                    document.body.appendChild(navMenu);
+                    movedToBody = true;
+                }
+                setTimeout(function() { navMenu.scrollTop = 0; }, 50);
+            } else {
+                if (movedToBody) {
+                    placeholder.parentNode.insertBefore(navMenu, placeholder.nextSibling);
+                    movedToBody = false;
+                }
+            }
+        });
+    });
+    </script>
+</header>
+
+<main class="content-container" role="main" aria-labelledby="declaration-title">
+    <section class="declaration" id="declaration" aria-label="重要申明">
+        <h1 id="declaration-title" class="declaration-title">重要申明</h1>
+        <p>习近平总书记指出：“阳光是最好的防腐剂。权力运行不见阳光，或有选择地见阳光，公信力就无法树立。执法司法越公开，就越有权威和公信力。涉及老百姓利益的案件，除法律规定需要保密的情形外，一般都应公开。要坚持以公开促公正、以透明保廉洁，增强主动公开和接受监督的意识，完善机制、创新方式、畅通渠道，依法及时公开执法司法的依据、程序、流程、结果和裁判文书。”</p>
+
+        <p>本站所述案件发生于 2019 年 1 月 20 日傍晚约 18 时，地点为贵阳市云岩区大十字广场河西路（GCJ-02坐标：106.710963, 26.578303）。案发后，被告人由毓秀路派出所滞留超过 24 小时，后于 2019 年 1 月 21 日22时50份送达看守所羁押。上述移送和羁押过程，依据已掌握的档案记录，存在可能违反《中华人民共和国刑事诉讼法》第八十五条、第九十三条有关及时送羁与应当向嫌疑人家属送达达通知文书及程序保障的情形。</p>
+
+        <p>被告人被送达看守所时记录显示其右眼部与左后背软组织损伤，双手背肿胀（见一审法院归档后对应的档案编号，如案卷材料编号 002400、002700、002800 等）严重伤情。截至本文更新之日（2025 年 9 月 22 日），被告人家属未实际收到刑事拘留决定书与逮捕决定书的纸质送达凭证；该事实与《中华人民共和国刑事诉讼法》第八十三条、九十三条关于送达程序和当事人知情权的规定存在明显冲突。</p>
+
+        <p>当事人与公安机关（含毓秀路派出所）就相关问题多次交涉，未获任何实质性解决。被告人曾就邮寄送达凭证向公安机关督察部门（警号：041661）反映，对方口头称已通过挂号邮寄并在电话中描述见到邮戳，但未提供邮寄单号或邮戳影像以供核验；该类答复无法满足事实核查和当事人权利救济的基本需求，具有不透明之嫌。</p>
+
+        <p>在诉讼档案查阅方面，被告人于 2024 年 11 月 5 日在一审法院档案室复制了所谓“正卷”材料，共计 56 张图片。经核验，所获得的档案材料存在大量应属正卷范围但未见的记录或证据载体，包括但不限于：被告人陈述、证人证言、涉案物证（如涉案手机设备 OPPO A5）的照片与视频、现场勘验笔录、鉴定结论等。依据最高人民法院和国家档案局关于诉讼档案管理的相关规定，上述范围的资料应纳入正卷并向当事人开放查阅。</p>
+
+        <p>后续多次向法院档案室申请加盖档案证明章或获取原始电子扫描件时，工作人回应模糊、流程反复，部分材料以合并 PDF 形式提供，而非独立的原始扫描文件。对比不同时间点获取的文件哈希值后发现：同一批次PDF原件在2025年9月1日至同年9月18日才半个月时间，SHA256/SM3 哈希值均发生变化；且原始扫描件形成时间显示为 2020 年 12 月 14日至15 日，与案结时间 2019 年 8 月 26 日存在明显不一致。上述事实形成了对卷宗形成时点与材料完整性、真实性的合理怀疑。</p>
+
+        <p>基于上述情况，本网站在不损害事实陈述的前提下，已对所获电子材料进行 SHA256 与 SM3 哈希固化，并采用 RSA4096 位 GPG 签名与加密的方式对证据链进行保全与公开存证，以便为后续核查提供可验证的技术依据。</p>
+
+        <p>在此，本站郑重申明：</p>
+
+        <div class="manual-list">
+            <p class="manual-item">1. 呼吁有关机关严格遵循法律程序，及时向当事人及其家属完整、规范地提供刑事拘留、逮捕通知书以及其它应当提供的程序性文书以及卷宗材料的原始或可核验的复本；在涉及邮寄送达的情况下，应提供邮寄凭证（含挂号单号、邮戳或物流凭证）以便当事人查验核实。</p>
+            <p class="manual-item">2. 针对档案材料的形成时间、扫描记录及其一致性问题，相关司法机关应予以说明并提供相应的原始记录或补正措施，以维护诉讼档案的完整性与可溯源性。</p>
+            <p class="manual-item">3. 本站坚持实事求是，合法依规的原则，对公开资料和技术固化结果进行透明发布，供社会监督与司法救济使用；但本站不代替司法机关作出认定，不对超出可证事实范围的推断承担法律责任。</p>
+            <p class="manual-item">4. 鼓励并欢迎相关单位在知悉本申明后，及时与当事人沟通问题、说清事实并采取必要的补正或调查措施；对公众和当事人关切的问题，依法公开处理进展与结果。</p>
+        </div>
+
+        <p>最后，《最高人民法院  最高人民检察院  公安部印发<关于依法惩治网络暴力违法犯罪的指导意见>的通知》(法发〔2023〕14号)已明确规定， “非故意虚构事实不违法” 的核心原则，为公民依法举报划定了清晰边界 —— 只要基于真实线索、无恶意捏造，即使存在细节误差或情绪性表述，仍受法律保护。这一制度设计既打击了借举报之名实施的网络暴力，也为正当监督提供了坚实保障。</p>
+        <p>请相关公职人员严守法纪，勿借国家机关公职人员身份，肆意引诱、误导案件当事人正当行使合法权利。例如，当事人在派出所拍摄警务人员公示栏信息时，此举是公民获取公开执法信息、监督执法行为的合理方式，可为后续维护自身合法权益留存依据；而《公安机关执法公开规定》《中华人民共和国政府信息公开条例》等法规，正是为司法透明、公众监督提供了明确的法律依据，也为公民此类合法行为提供了保障。</p>
+
+        <p>特此申明</p>
+
+    <p class="caption">王&nbsp;&nbsp;贵&nbsp;&nbsp;平&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    <p class="caption">2025 年 9 月 23 日更新</p>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="footer-center">
+        <span>© 2025 王贵平保留所有权</span>
+    </div>
+</footer>
+
+<script>
+    (function(){
+        function pad(n){ return n<10?('0'+n):n; }
+        function weekdayName(d){ return ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'][d]; }
+        function formatClock(date){
+            return date.getFullYear() + '年' + (date.getMonth()+1) + '月' + date.getDate() + '日 ' + weekdayName(date.getDay()) + ' ' + pad(date.getHours()) + ':' + pad(date.getMinutes()) + ':' + pad(date.getSeconds());
+        }
+
+        var el = document.getElementById('dynamic-clock');
+        if(!el) return;
+        function update(){ el.textContent = formatClock(new Date()); }
+        update();
+        var timer = setInterval(update,1000);
+        window.dynamicClock = { stop: function(){ clearInterval(timer); }, start: function(){ timer = setInterval(update,1000); } };
+    })();
+</script>
+<script>
+(function(){
+    var svgBox = document.getElementById('floating-svg-container');
+    if(!svgBox) return;
+    var baseLeft = 5; 
+    var amplitude = 3; 
+    var speed = 0.7; 
+    function animate(){
+        var t = Date.now() * 0.001 * speed;
+        var offset = Math.sin(t) * amplitude;
+        svgBox.style.left = (baseLeft + offset) + 'vw';
+    }
+    setInterval(animate, 30);
+})();
+</script>
+</body>
+</html>

@@ -56,7 +56,6 @@ var _hmt = _hmt || [];
             top: 0;
             z-index: 2;
         }
-        /* 固定序号列 */
         th:first-child,
         td:first-child {
             position: sticky;
@@ -64,7 +63,6 @@ var _hmt = _hmt || [];
             background: #1a2733;
             z-index: 3;
         }
-        /* 特别处理表头的序号列 */
         th:first-child {
             z-index: 4;
         }
@@ -91,20 +89,16 @@ var _hmt = _hmt || [];
             padding: 2px 6px;
             text-decoration: none;
         }
-        /* 文件名一列左对齐 */
         th.filename-col, td.filename-col {
             text-align: left;
         }
-        /* 阅卷标注列宽自适应 */
         th.mark-col, td.mark-col {
             min-width: 60px;
             text-align: left;
         }
-        /* 备注栏左对齐 */
         th.remark-col, td.remark-col {
             text-align: left;
         }
-        /* 新增列样式 */
         th.source-col, td.source-col,
         th.time-col, td.time-col,
         th.sha256-col, td.sha256-col,
@@ -117,9 +111,51 @@ var _hmt = _hmt || [];
             font-family: 'Courier New', monospace;
             font-size: 0.8em;
         }
+            #pie-back-btn {
+                position: fixed;
+                top: 14px;
+                left: 14px;
+                width: 72px;
+                height: 72px;
+                border-radius: 50%;
+                display: inline-grid;
+                place-items: center;
+                color: #0b0f12;
+                font-weight: 800;
+                font-size: 13px;
+                text-align: center;
+                text-decoration: none;
+                z-index: 4000;
+                box-shadow: 0 8px 26px rgba(0,0,0,0.6), 0 2px 6px rgba(0,0,0,0.35);
+                cursor: pointer;
+                transition: transform .18s ease, box-shadow .18s ease;
+                background: conic-gradient(from 220deg, #00ffd0 0deg, #00b894 90deg, #1976d2 180deg, #7c4dff 260deg, #00ffd0 360deg);
+                -webkit-tap-highlight-color: transparent;
+            }
+            #pie-back-btn:focus { outline: none; transform: translateY(-3px) scale(1.03); box-shadow: 0 14px 36px rgba(0,0,0,0.5); }
+            #pie-back-btn:hover { transform: translateY(-4px) scale(1.04); }
+            #pie-back-btn .core {
+                width: 52px;
+                height: 52px;
+                border-radius: 50%;
+                background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(245,245,245,0.96));
+                display: inline-grid;
+                place-items: center;
+                box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+                color: #0b0f12;
+                font-weight: 800;
+                font-size: 13px;
+                line-height: 1;
+            }
+            @media (max-width:420px){
+                #pie-back-btn{ display:none; }
+            }
     </style>
 </head>
 <body>
+    <button id="pie-back-btn" aria-label="返回" title="返回">
+        <span class="core">返回</span>
+    </button>
     
     <div class="table-title">一、（2019）黔0103刑初821号案件走势表</div>
     <div class="table-container">
@@ -204,7 +240,7 @@ var _hmt = _hmt || [];
     </div>
     
 
-    <div class="table-title">二、（2019）黔0103刑初821号.pdf【2025年9月2日在一审档案室刻录取得】</div>
+    <div class="table-title">二、正卷1【2025年8月27日在一审档案室刻录取得】</div>
     <div class="table-container">
         <table id="pdf文件">
             <thead>
@@ -920,8 +956,40 @@ var _hmt = _hmt || [];
             </tbody>
         </table>
     </div>
-    <!-- 四、阅卷结论（表格形式，风格与其它表格一致） -->
-    <div class="table-title">四、阅卷结论</div>
+    <div class="table-title">四、（2019）黔0103刑初821号.pdf【2025年9月18日在一审档案室刻录取得】</div>
+    <div class="table-container">
+        <table id="pdf文件">
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th class="source-col">来源</th>
+                    <th class="time-col">文件形成时间</th>
+                    <th class="filename-col">文件名</th>
+                    <th class="sha256-col">SHA256哈希值</th>
+                    <th class="sm3-col">SM3哈希值</th>
+                    <th class="remark-col">备注</th>
+                    <th>查看原件</th>
+                    <th class="purpose-col">证明目的</th>
+                    <th class="mark-col">阅卷标注</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td class="source-col">贵阳市云岩区人民法院档案室</td>
+                    <td class="time-col">2025年9月18日  12:39:38</td>
+                    <td class="filename-col">（2019）黔0103刑初821号.pdf</td>
+                    <td class="sha256-col"><span class="hash-value">819E6AEC3D47302BFFFA6C3237979AC52FE6F37683F6A9C188E594F151645B5E</span></td>
+                    <td class="sm3-col"><span class="hash-value">75298B4CAF055ECB12DF7FD81BE6BABB8C6156888609D522BB3FAF4D856BCFEB</span></td>
+                    <td class="remark-col">从文件可以看出，2025年9月1日到2025年9月18日，（2019）黔0103刑初821号.pdf的SM3、SHA256哈希值明显不一致，说明该卷宗材料一定被篡改，仔细查阅其中的内容，也没有发现审批文书文号或补页标注，同时也没有骑缝章。</td>
+                    <td><a href="./一审法院——（2019）黔0103刑初821号/(2019)黔0103刑初821号.pdf" target="_blank">查看</a></td>
+                    <td class="purpose-col">卷宗资料被肆意篡改，且未告知当事人，并且无审批文书文号和补页标注以证明为合规操作，仅凭此次发现的问题，足以证明相关人员明显涉嫌违法。可合理怀疑其它环节同样存在此类情况，有待进一步核实，但初步估计相关人员且存在构成犯罪的较大可能性。</td></td>
+                    <td class="mark-col">有必要请纪检监察、甚至中央巡视组介入、同时考虑央媒报道，多措并举，推动问题的有效解决。</td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="table-title">五、阅卷结论</div>
     <div class="table-container">
         <table id="阅卷结论表">
             <thead>
@@ -992,5 +1060,17 @@ var _hmt = _hmt || [];
             </tbody>
         </table>
     </div>
+    <script>
+    ;(function(){
+        var btn = document.getElementById('pie-back-btn');
+        if(!btn) return;
+        function goBack(){
+            try{ window.location.href = 'court.html'; }catch(e){ /* fallback: do nothing */ }
+        }
+        btn.addEventListener('click', function(e){ e.preventDefault(); goBack(); });
+        btn.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar'){ e.preventDefault(); goBack(); } });
+        btn.setAttribute('tabindex','0');
+    })();
+    </script>
 </body>
 </html>
