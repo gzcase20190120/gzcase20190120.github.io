@@ -225,6 +225,13 @@ var _hmt = _hmt || [];
         /* softer purple highlight suitable for dark background */
         .highlight-box{ background:linear-gradient(180deg, rgba(86,42,140,0.12), rgba(86,42,140,0.06)); border-radius:8px; padding:14px; border:1px solid rgba(120,84,200,0.06); }
         .highlight-box p{ color:rgba(230,255,240,0.95); }
+        /* When a statute/law card is expanded, make the article heading (the <strong> inside paragraphs)
+           visually distinct by using the site's green accent. Other text color remains unchanged. */
+        .law-content.show .highlight-box p strong,
+        .statute-body.show .highlight-box p strong {
+            color: #00ff88;
+            text-shadow: 0 0 8px rgba(0,255,136,0.25);
+        }
         @media (max-width:900px){ .statute-card{ margin:14px 4vw; } }
 
         /* Make the law name more prominent than article headings */
@@ -257,7 +264,7 @@ var _hmt = _hmt || [];
             <ul class="nav-menu" id="navMenu">
                 <li><a class="capsule-btn" href="index.html">网站主页</a></li>
                 <li><a class="capsule-btn" href="statement.html">重要申明</a></li>
-                <li><a class="capsule-btn" href="public.html">公安专栏</a></li>
+                <li><a class="capsule-btn" href="police.html">公安专栏</a></li>
                 <li><a class="capsule-btn" href="procuratorate.html">检察专栏</a></li>
                 <li><a class="capsule-btn" href="court.html">法院专栏</a></li>
                 <li><a class="capsule-btn" href="interview.html">信访专栏</a></li>
@@ -365,6 +372,94 @@ var _hmt = _hmt || [];
                 <p class="text-indent-2">（六）冒充军警人员抢劫的；</p>
                 <p class="text-indent-2">（七）持枪抢劫的；</p>
                 <p class="text-indent-2">（八）抢劫军用物资或者抢险、救灾、救济物资的。</p>
+                <p class="text-indent-2"><strong>第二百八十条</strong>　【伪造、变造、买卖国家机关公文、证件、印章罪】【盗窃、抢夺、毁灭国家机关公文、证件、印章罪】伪造、变造、买卖或者盗窃、抢夺、毁灭国家机关的公文、证件、印章的，处三年以下有期徒刑、拘役、管制或者剥夺政治权利，并处罚金；情节严重的，处三年以上十年以下有期徒刑，并处罚金。</p>
+                <p class="text-indent-2">　　【伪造公司、企业、事业单位、人民团体印章罪】伪造公司、企业、事业单位、人民团体的印章的，处三年以下有期徒刑、拘役、管制或者剥夺政治权利，并处罚金。</p>
+                <p class="text-indent-2">　　【伪造、变造、买卖身份证件罪】伪造、变造、买卖居民身份证、护照、社会保障卡、驾驶证等依法可以用于证明身份的证件的，处三年以下有期徒刑、拘役、管制或者剥夺政治权利，并处罚金；情节严重的，处三年以上七年以下有期徒刑，并处罚金。</p>
+                <p class="text-indent-2"><strong>第二百八十条之一</strong>　【使用虚假身份证件、盗用身份证件罪】在依照国家规定应当提供身份证明的活动中，使用伪造、变造的或者盗用他人的居民身份证、护照、社会保障卡、驾驶证等依法可以用于证明身份的证件，情节严重的，处拘役或者管制，并处或者单处罚金。</p>
+                <p class="text-indent-2">　　有前款行为，同时构成其他犯罪的，依照处罚较重的规定定罪处罚。</p>
+                <p class="text-indent-2"><strong>第二百八十条之二</strong>　【冒名顶替罪】盗用、冒用他人身份，顶替他人取得的高等学历教育入学资格、公务员录用资格、就业安置待遇的，处三年以下有期徒刑、拘役或者管制，并处罚金。</p>
+                <p class="text-indent-2">　　组织、指使他人实施前款行为的，依照前款的规定从重处罚。</p>
+                <p class="text-indent-2">　　国家工作人员有前两款行为，又构成其他犯罪的，依照数罪并罚的规定处罚。</p>
+                <p class="text-indent-2"><strong>第三百零五条</strong>【伪证罪】在刑事诉讼中，证人、鉴定人、记录人、翻译人对与案件有重要关系的情节，故意作虚假证明、鉴定、记录、翻译，意图陷害他人或者隐匿罪证的，处三年以下有期徒刑或者拘役；情节严重的，处三年以上七年以下有期徒刑。</p>
+                <p class="text-indent-2"><strong>第三百九十七条</strong>　【滥用职权罪】【玩忽职守罪】国家机关工作人员滥用职权或者玩忽职守，致使公共财产、国家和人民利益遭受重大损失的，处三年以下有期徒刑或者拘役；情节特别严重的，处三年以上七年以下有期徒刑。本法另有规定的，依照规定。</p>
+                <p class="text-indent-2">　　国家机关工作人员徇私舞弊，犯前款罪的，处五年以下有期徒刑或者拘役；情节特别严重的，处五年以上十年以下有期徒刑。本法另有规定的，依照规定。</p>
+                <p class="text-indent-2"><strong>第三百九十九条</strong>　【徇私枉法罪】司法工作人员徇私枉法、徇情枉法，对明知是无罪的人而使他受追诉、对明知是有罪的人而故意包庇不使他受追诉，或者在刑事审判活动中故意违背事实和法律作枉法裁判的，处五年以下有期徒刑或者拘役；情节严重的，处五年以上十年以下有期徒刑；情节特别严重的，处十年以上有期徒刑。</p>
+                <p class="text-indent-2">　　【民事、行政枉法裁判罪】在民事、行政审判活动中故意违背事实和法律作枉法裁判，情节严重的，处五年以下有期徒刑或者拘役；情节特别严重的，处五年以上十年以下有期徒刑。</p>
+                <p class="text-indent-2">　　【执行判决、裁定失职罪】【执行判决、裁定滥用职权罪】在执行判决、裁定活动中，严重不负责任或者滥用职权，不依法采取诉讼保全措施、不履行法定执行职责，或者违法采取诉讼保全措施、强制执行措施，致使当事人或者其他人的利益遭受重大损失的，处五年以下有期徒刑或者拘役；致使当事人或者其他人的利益遭受特别重大损失的，处五年以上十年以下有期徒刑。</p>
+                <p class="text-indent-2">　　司法工作人员收受贿赂，有前三款行为的，同时又构成本法第三百八十五条规定之罪的，依照处罚较重的规定定罪处罚。</p>
+                <p class="text-indent-2"><strong>第四百零二条</strong>　【徇私舞弊不移交刑事案件罪】行政执法人员徇私舞弊，对依法应当移交司法机关追究刑事责任的不移交，情节严重的，处三年以下有期徒刑或者拘役；造成严重后果的，处三年以上七年以下有期徒刑。</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="statute-card" id="statute-admin-cpl">
+        <div class="meta">
+            <h4 class="statute-title">《中华人民共和国行政诉讼法》</h4>
+            <div class="statute-controls">
+                <button class="toggle-law-btn" data-target="statute-admin-cpl-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
+                <a class="official-link" href="http://gongbao.court.gov.cn/Details/59a012cfc7e89e15f7f30bf18489fe.html?sw=%e8%af%89%e8%ae%bc" target="_blank" rel="noopener">官方原文</a>
+            </div>
+        </div>
+        <div id="statute-admin-cpl-body" class="law-content collapse-hidden">
+            <div class="highlight-box">
+                <p class="text-indent-2"><strong>第五条</strong>  人民法院审理行政案件，对具体行政行为是否合法进行审查。</p>
+                <p class="text-indent-2"><strong>第十条</strong>  人民检察院有权对行政诉讼实行法律监督。</p>
+                <p class="text-indent-2"><strong>第十一条</strong>  人民法院受理公民、法人和其他组织对下列具体行政行为不服提起的诉讼：</p>
+                <p class="text-indent-2">（一）对拘留、罚款、吊销许可证和执照、责令停产停业、没收财物等行政处罚不服的；</p>
+                <p class="text-indent-2">（二）对限制人身自由或者对财产的查封、扣押、冻结等行政强制措施不服的；</p>
+                <p class="text-indent-2">（三）认为行政机关侵犯法律规定的经营自主权的；</p>
+                <p class="text-indent-2">（四）认为符合法定条件申请行政机关颁发许可证和执照，行政机关拒绝颁发或者不予答复的；</p>
+                <p class="text-indent-2">（五）申请行政机关履行保护人身权、财产权的法定职责，行政机关拒绝履行或者不予答复的；</p>
+                <p class="text-indent-2">（六）认为行政机关没有依法发给抚恤金的；</p>
+                <p class="text-indent-2">（七）认为行政机关违法要求履行义务的；</p>
+                <p class="text-indent-2">（八）认为行政机关侵犯其他人身权、财产权的。</p>
+                <p class="text-indent-2"><strong>第十二条</strong> 人民法院不受理公民、法人或者其他组织对下列事项提起的诉讼：</p>
+                <p class="text-indent-2">（一）国防、外交等国家行为；</p>
+                <p class="text-indent-2">（二）行政法规、规章或者行政机关制定、发布的具有普遍约束力的决定、命令；</p>
+                <p class="text-indent-2">（三）行政机关对行政机关工作人员的奖惩、任免等决定；</p>
+                <p class="text-indent-2">（四）法律规定由行政机关最终裁决的具体行政行为。</p>
+                <p class="text-indent-2"><strong>第十七条</strong> 行政案件由最初作出具体行政行为的行政机关所在地人民法院管辖。经复议的案件，复议机关改变原具体行政行为的，也可以由复议机关所在地人民法院管辖。</p>
+                <p class="text-indent-2"><strong>第二十四条</strong>  依照本法提起诉讼的公民、法人或者其他组织是原告。</p>
+                <p class="text-indent-2">有权提起诉讼的公民、法人或者其他组织是原告。</p>
+                <p class="text-indent-2">有权提起诉讼的公民死亡，其近亲属可以提起诉讼。</p>
+                <p class="text-indent-2"><strong>第二十五条</strong>  公民、法人或者其他组织直接向人民法院提起诉讼的，作出具体行政行为的行政机关是被告。</p>
+                <p class="text-indent-2">经复议的案件，复议机关决定维持原具体行政行为的，作出原具体行政行为的行政机关是被告；复议机关改变原具体行政行为的，复议机关是被告。</p>
+                <p class="text-indent-2">两个以上行政机关作出同一具体行政行为的，共同作出具体行政行为的行政机关是共同被告。</p>
+                <p class="text-indent-2">由法律、法规授权的组织所作的具体行政行为，该组织是被告。由行政机关委托的组织所作的具体行政行为，委托的行政机关是被告。</p>
+                <p class="text-indent-2">行政机关被撤销的，继续行使其职权的行政机关是被告。</p>
+                <p class="text-indent-2"><strong>第三十二条</strong>  被告对作出的具体行政行为负有举证责任，应当提供作出该具体行政行为的证据和所依据的规范性文件。</p>
+                <p class="text-indent-2"><strong>第三十四条</strong> 人民法院有权要求当事人提供或者补充证据。</p>
+                <p class="text-indent-2">人民法院有权向有关行政机关以及其他组织、公民调取证据。</p>
+                <p class="text-indent-2"><strong>第四十一条</strong>  提起诉讼应当符合下列条件：</p>
+                <p class="text-indent-2">（一）原告是认为具体行政行为侵犯其合法权益的公民、法人或者其他组织；</p>
+                <p class="text-indent-2">（二）有明确的被告；</p>
+                <p class="text-indent-2">（三）有具体的诉讼请求和事实根据；</p>
+                <p class="text-indent-2">（四）属于人民法院受案范围和受诉人民法院管辖。</p>
+                <p class="text-indent-2"><strong>第四十二条</strong>  人民法院接到起诉状，经审查，应当在七日内立案或者作出裁定不予受理。原告对裁定不服的，可以提起上诉。</p>
+                <p class="text-indent-2"><strong>第四十三条</strong>  人民法院应当在立案之日起五日内，将起诉状副本发送被告。被告应当在收到起诉状副本之日起十日内向人民法院提交作出具体行政行为的有关材料，并提出答辩状。人民法院应当在收到答辩状之日起五日内，将答辩状副本发送原告。</p>
+                <p class="text-indent-2">被告不提出答辩状的，不影响人民法院审理。</p>
+                <p class="text-indent-2"><strong>第五十四条</strong>  人民法院经过审理，根据不同情况，分别作出以下判决：</p>
+                <p class="text-indent-2">（一）具体行政行为证据确凿，适用法律、法规正确，符合法定程序的，判决维持。</p>
+                <p class="text-indent-2">（二）具体行政行为有下列情形之一的，判决撤销或者部分撤销，并可以判决被告重新作出具体行政行为：</p>
+                <p class="text-indent-2">1、主要证据不足的；</p>
+                <p class="text-indent-2">2、适用法律、法规错误的；</p>
+                <p class="text-indent-2">3、违反法定程序的；</p>
+                <p class="text-indent-2">4、超越职权的；</p>
+                <p class="text-indent-2">5、滥用职权的。</p>
+                <p class="text-indent-2">（三）被告不履行或者拖延履行法定职责的，判决其在一定期限内履行。</p>
+                <p class="text-indent-2">（四）行政处罚显失公正的，可以判决变更。</p>
+                <p class="text-indent-2"><strong>第六十二条</strong>  当事人对已经发生法律效力的判决、裁定，认为确有错误的，可以向原审人民法院或者上一级人民法院提出申诉，但判决、裁定不停止执行。</p>
+                <p class="text-indent-2"><strong>第六十三条</strong>  人民法院院长对本院已经发生法律效力的判决、裁定，发现违反法律法规规定认为需要再审的，应当提交审判委员会决定是否再审。</p>
+                <p class="text-indent-2"><strong>第六十五条</strong> 当事人必须履行人民法院发生法律效力的判决、裁定。</p>
+                <p class="text-indent-2">公民、法人或者其他组织拒绝履行判决、裁定的，行政机关可以向第一审人民法院申请强制执行，或者依法强制执行。</p>
+                <p class="text-indent-2">行政机关拒绝履行判决、裁定的，第一审人民法院可以采取以下措施：</p>
+                <p class="text-indent-2">（一）对应当归还的罚款或者应当给付的赔偿金，通知银行从该行政机关的帐户内划拨；</p>
+                <p class="text-indent-2">（二）在规定期限内不履行的，从期满之日起，对该行政机关按日处五十元至一百元的罚款；</p>
+                <p class="text-indent-2">（三）向该行政机关的上一级行政机关或者监察、人事机关提出司法建议。接受司法建议的机关，根据有关规定进行处理，并将处理情况告知人民法院；</p>
+                <p class="text-indent-2">（四）拒不履行判决、裁定，情节严重构成犯罪的，依法追究主管人员和直接责任人员的刑事责任。</p>
+                <p class="text-indent-2"><strong>第六十七条</strong> 公民、法人或者其他组织单独就损害赔偿提出请求，应当先由行政机关解决。对行政机关的处理不服，可以向人民法院提起诉讼。</p>
+                <p class="text-indent-2">赔偿诉讼可以适用调解。</p>
             </div>
         </div>
     </div>
@@ -375,12 +470,15 @@ var _hmt = _hmt || [];
             <div class="statute-controls">
                 <button class="toggle-law-btn" data-target="statute-cpl-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
                 <a class="official-link" href="http://gongbao.court.gov.cn/Details/11aaa996a59f5824912be62d3dfa0d.html?sw=" target="_blank" rel="noopener">官方原文</a>
+                <a class="official-link" href="http://gongbao.court.gov.cn/Details/b772fbc86b46cdf2eddda464ef3325.html?sw=" target="_blank" rel="noopener">续官方原文</a>
             </div>
         </div>
         <div id="statute-cpl-body" class="law-content collapse-hidden">
             <div class="highlight-box">
                 <p class="text-indent-2"><strong>第八十五条</strong>公安机关拘留人的时候，必须出示拘留证。</p>
                 <p class="text-indent-2">拘留后，应当立即将被拘留人送看守所羁押，至迟不得超过二十四小时。除无法通知或者涉嫌危害国家安全犯罪、恐怖活动犯罪通知可能有碍侦查的情形以外，应当在拘留后二十四小时以内，通知被拘留人的家属。有碍侦查的情形消失以后，应当立即通知被拘留人的家属。</p>
+                <p class="text-indent-2"><strong>第九十三条</strong>　公安机关逮捕人的时候，必须出示逮捕证。</p>
+                <p class="text-indent-2">逮捕后，应当立即将被逮捕人送看守所羁押。除无法通知的以外，应当在逮捕后二十四小时以内，通知被逮捕人的家属。</p>
             </div>
         </div>
     </div>
@@ -480,7 +578,92 @@ var _hmt = _hmt || [];
 
     <h3>二、关联公安法规</h3>
 
-    <!-- 从 legal_basis.html 提取的公安相关法规（排除已在第一部分列出的四项） -->
+    <div class="statute-card" id="statute-criminal-case-filing">
+        <div class="meta">
+            <h4 class="statute-title">《公安机关刑事案卷立卷规范（2014版）》（公法〔2014〕1080号）</h4>
+            <div class="statute-controls">
+                <button class="toggle-law-btn" data-target="statute-criminal-case-filing-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
+                <a class="official-link" href="http://www.drxsfd.com/xf/xx2.asp?bh=9499" target="_blank" rel="noopener">官方原文</a>
+            </div>
+        </div>
+        <div id="statute-criminal-case-filing-body" class="law-content collapse-hidden">
+            <div class="highlight-box">
+                <p class="text-indent-2"><strong>一、立卷基本规范</strong></p>
+                <p class="text-indent-2">（三）刑事案卷分为诉讼卷（又称正卷）和侦查工作卷（又称副卷）两大部分。诉讼卷主要包括对外使用的法律文书和证明案件事实的证据材料，组装后随案移送人民检察院，供诉讼使用。侦查工作卷主要包括不对外发生法律效力的内部审批文书、案件研究记录以及有保存价值但不需作为刑事诉讼证据使用的其他材料，装订后存档备查。</p>
+                <p class="text-indent-2">采取技术侦查制作的法律文书和获取的证据材料，作为证据使用的，应当将有关法律文书和证据材料归入诉讼卷随案移送，必要时单独立卷，标注密级；不作为证据使用的，归入侦查工作卷，不随案移送；与案件无关的材料必须及时销毁。</p>
+                <p class="text-indent-2"><strong>二、诉讼卷立卷规范</strong></p>
+                <p class="text-indent-2">诉讼卷，是公安机关对侦查终结的案件，根据规定移送同级人民检察院审查起诉的案卷。诉讼卷可以分为诉讼文书卷和证据材料卷两类。</p>
+                <p class="text-indent-2"><strong>（一）诉讼文书卷立卷规范</strong></p>
+                <p class="text-indent-2">在办理刑事案件过程中制作或者收集的反映诉讼程序以及采取强制措施的过程，对外产生法律效力的法律文书，如立案决定书、取保候审、监视居住决定书、拘留证、逮捕证等，应当归入诉讼文书卷。（一）诉讼文书卷立卷规范</p>
+                <p class="text-indent-2">诉讼文书卷按照下列顺序和要求立卷，卷内文书按照文书类别和制作时间先后排列：</p>
+                <p class="text-indent-2">卷内文书目录；</p>
+                <p class="text-indent-2">证明案件来源的文书，包括：接处警登记表、受案登记表、受案回执；</p>
+                <p class="text-indent-2">与立案、不予立案相关的文书，包括：立案决定书、不予立案通知书、刑事复议/复核决定书、人民检察院要求说明不立案理由通知书、不立案理由说明书、人民检察院通知立案书；</p>
+                <p class="text-indent-2">移送案件通知书、指定管辖决定书；</p>
+                <p class="text-indent-2">换押证；</p>
+                <p class="text-indent-2">对犯罪嫌疑人拘留、逮捕的相关法律文书，包括：拘留证、拘留通知书、延长拘留期限通知书；提请批准逮捕书、要求复议意见书、提请复核意见书、人民检察院批准/不批准逮捕决定书、人民检察院复议/复核决定书，逮捕证、逮捕通知书、变更逮捕措施通知书，提请批准延长侦查羁押期限意见书、人民检察院批准/不批准延长侦查羁押期限决定书、变更羁押期限通知书；</p>
+                <p class="text-indent-2">变更强制措施申请、不予释放/变更强制措施通知书;</p>
+                <p class="text-indent-2">释放通知书、释放证明书；</p>
+                <p class="text-indent-2">入所健康检查表；</p>
+                <p class="text-indent-2">对犯罪嫌疑人取保候审、监视居住的相关法律文书及有关材料，包括：取保候审的书面申请材料，不予释放/变更强制措施通知书、释放通知书、取保候审决定书、保证人身份证明材料、取保候审保证书或收取保证金通知书回执、责令具结悔过决定书、悔过书、对保证人罚款决定书、没收保证金决定书、没收保证金通知书回执、解除取保候审决定书、退还保证金决定书、退还保证金通知书回执、对保证人处罚的相关文书、被取保候审人义务告知书、保存证件清单、监视居住决定书/执行通知书，指定居所监视居住通知书，解除监视居住决定书/通知书；</p>
+                <p class="text-indent-2">对人大代表/政协委员采取强制措施的许可证明材料或者报告、通报材料；</p>
+                <p class="text-indent-2">采取技术侦查措施决定书、执行技术侦查措施通知书、延长技术侦查措施期限决定书、解除技术侦查措施决定书；</p>
+                <p class="text-indent-2">回避相关文书，包括：申请回避的书面材料或者相关记录、回避/驳回申请回避决定书、不服驳回申请回避的复议申请材料、刑事复议决定书；</p>
+                <p class="text-indent-2">律师会见相关文书，包括：提供法律援助通知书、会见犯罪嫌疑人申请表、准予会见犯罪嫌疑人决定书、通知书，不准予会见犯罪嫌疑人决定书；</p>
+                <p class="text-indent-2">移送起诉告知书；</p>
+                <p class="text-indent-2">辩护律师意见;</p>
+                <p class="text-indent-2">死亡通知书、告知书；</p>
+                <p class="text-indent-2">结案后的相关文书，包括：终止侦查决定书、撤销案件决定书。</p>
+                <p class="text-indent-2">附带民事诉讼材料；</p>
+                <p class="text-indent-2">有多名犯罪嫌疑人的，应当将每名犯罪嫌疑人的法律文书分别集中在一起按照上述顺序排列；犯罪嫌疑人之间按照其在共同犯罪中作用和地位的不同，先主犯、后从犯排序。</p>
+                <p class="text-indent-2">起诉意见书、没收违法所得意见书、强制医疗意见书不装入卷内，直接附卷移送人民检察院。</p>
+                <p class="text-indent-2"><strong>（二）证据材料卷立卷规范</strong></p>
+                <p class="text-indent-2">对于侦查过程中采取讯问、询问、勘验、检查、搜查、查封、扣押、查询、冻结、调取证据、鉴定、辨认、通缉等侦查措施形成的法律文书和取得的证据材料，应当归入证据材料卷。</p>
+                <p class="text-indent-2">对于物证，应当随案移送，对不宜移送的，应当在依照规定妥善保管的同时，拍摄或者制作足以反映原物外形或者内容的照片、录像或者复制品，并附有关制作过程及原件、原物存放地点的文字说明入卷；书证，应当是原件，只有在取得原件确有困难时，才可以使用副本或者复制件。以书证的副本、复制件入卷的，应当附与原件核实无误的说明，或者经鉴定等方式证明其真实性的鉴定材料。以上说明材料，应当由制作人和物品持有人或者物品持有单位有关人员签名。</p>
+                <p class="text-indent-2">视听资料、电子数据，可以通过截图、照片、文字打印、文字翻译等形式转换，其原始载体应当妥善保管。视听资料、电子数据的原始载体必须移送的，应当放入资料袋中，并附移交清单及制作或者来源说明。对视听资料，制作说明中应当附有提取或者制作过程的说明，并写明制作人、持有人身份、制作时间、地点、条件和方法，并由制作人签名。对电子数据，应当附有提取过程及原始存储介质存放地点的说明，写明收集的程序、方式是否符合法律及有关技术规范等内容，并由提取人签名。</p>
+                <p class="text-indent-2">证据材料卷按照下列顺序和要求立卷：</p>
+                <p class="text-indent-2">1．卷内文书目录；</p>
+                <p class="text-indent-2">2．证明案件来源的有关材料，包括：报案材料、举报信、移送案件材料等；</p>
+                <p class="text-indent-2">3．犯罪嫌疑人基本情况（附照片）、户籍信息资料（如通过公安信息网系统打印，照片和身份信息与犯罪嫌疑人本人及其供述相符的，应当加盖办案单位印章，并注明制作时间、来源，由办案人员签名；照片和身份信息与犯罪嫌疑人本人及其供述不相符的，应当向犯罪嫌疑人户籍所在地公安机关核实信息并调取相关户籍信息等证据）、自然人主体的政治面貌、是否人大代表（政协委员）、国籍等特殊身份的证明，单位主体的身份证明及法定代表人、直接负责的主管人员和其他直接责任人员在单位的任职、职责、负责权限的证明；</p>
+                <p class="text-indent-2">4．犯罪嫌疑人归案（抓获）情况的说明；</p>
+                <p class="text-indent-2">5．继续盘问通知书、延长继续盘问时限审批表、当场（继续）盘问笔录、检查笔录；</p>
+                <p class="text-indent-2">6．提讯提解证；</p>
+                <p class="text-indent-2">7．犯罪嫌疑人供述或者辩解相关文书及材料，包括：传唤证、拘传证、传讯通知书、未成年人法定代理人到场通知书、犯罪嫌疑人诉讼权利义务告知书、讯问笔录、犯罪嫌疑人亲笔供词、辨认笔录（含辨认照片及照片说明）、指认现场笔录及照片；</p>
+                <p class="text-indent-2">8．未成年犯罪嫌疑人社会调查报告；</p>
+                <p class="text-indent-2">9．被害人陈述材料，包括：询问通知书、未成年人法定代理人到场通知书、被害人诉讼权利义务告知书、询问笔录、被害人亲笔证词、辨认笔录（含辨认照片及照片说明）；</p>
+                <p class="text-indent-2">10．证人证言材料，包括：询问通知书、未成年证人法定代理人到场通知书、证人诉讼权利义务告知书、询问笔录、证人亲笔证词、辨认笔录（含辨认照片及照片说明）；</p>
+                <p class="text-indent-2">11．人身检查笔录，提取指纹信息、采集血液等生物样本的，要制作提取笔录或采集生物样本笔录。</p>
+                <p class="text-indent-2">12．物证照片及制作、保存说明，书证或者书证副本及制作说明，视听资料、电子数据，或者其转换复制证据及证明收集过程合法性的法律文书或者制作说明，并按照以下要求附收集物证、书证的相关法律文书：</p>
+                <p class="text-indent-2">（1）现场勘查过程中扣押一般物品、文件的，应当有现场勘验笔录，载明发现该证据的具体时间、地点和扣押的过程，并附扣押清单；</p>
+                <p class="text-indent-2">（2）搜查过程中扣押物品、文件的，应当有搜查证（执行拘留、逮捕过程中进行搜查的，可不附）、搜查笔录，载明发现该证据的具体时间、地点和扣押过程；</p>
+                <p class="text-indent-2">（3）扣押价值较高或者可能严重影响正常生产经营的财物的，应当有经县级以上公安机关负责人批准制作的扣押决定书，并附扣押笔录和扣押清单；</p>
+                <p class="text-indent-2">（4）非现场勘查、搜查过程中扣押一般财物的，应当有经办案部门负责人批准制作的扣押决定书，并附扣押笔录和扣押清单；</p>
+                <p class="text-indent-2">（5）调取证据的，应当有调取证据通知书、调取证据清单；接收证据的，应当有接收证据材料清单。</p>
+                <p class="text-indent-2">13．查封土地、房屋等不动产，或者船舶、航空器以及其他不宜移动的大型机器、设备等特定动产的，应当有查封决定书、查封笔录、查封清单、协助查封通知书回执；同时扣押不动产、特定动产及其产权凭证、使用权凭证的，应当有扣押清单、扣押笔录。</p>
+                <p class="text-indent-2">14．各类检验、鉴定相关文书资料，包括：解剖尸体通知书、鉴定聘请书、鉴定委托书、鉴定意见通知书，法医和DNA检验鉴定、司法精神病鉴定、文件检验鉴定、痕迹检验鉴定、理化检验鉴定、伤情鉴定、估价鉴定、会计鉴定、审计报告、出具鉴定意见和文书的鉴定机构和鉴定人资质证明文件复印件；</p>
+                <p class="text-indent-2">15．涉案财物的处理情况及去向的证明文件，包括：发还清单、随案移送清单、销毁清单、相关照片、见证人身份信息、解除查封冻结的相关文件、解除扣押邮件/电报通知书等；</p>
+                <p class="text-indent-2">16．现场勘验（复验）笔录、侦查实验笔录、现场图、现场照片、提取笔录等现场资料，见证人身份信息；</p>
+                <p class="text-indent-2">17．证明犯罪嫌疑人有自首、立功、前科以及其他法定或者酌定从重、从轻、减轻或者免除处罚情节的材料及证明材料来源的有关文书或者说明；</p>
+                <p class="text-indent-2">18、民事赔偿、赔礼道歉、被害人谅解（自愿和解）、达成和解协议的相关材料；</p>
+                <p class="text-indent-2">19．同案犯罪嫌疑人作另案处理、其他处理的相关证明材料及主要证据复印件；</p>
+                <p class="text-indent-2">20．其他需要移送的证据材料。</p>
+                <p class="text-indent-2">对同一犯罪嫌疑人的相关材料一般按照时间顺序排列，采取传唤、传讯措施通知犯罪嫌疑人到案接受讯问的，传唤证、传讯证应当与当次讯问笔录一同列入案卷，排在当次讯问笔录之前。</p>
+                <p class="text-indent-2">对涉及多名犯罪嫌疑人或多起案件，材料较多的，可对每个犯罪嫌疑人的供述和辩解及相关文书分别立卷；对其他材料，以每起案件为一个完整的组成部分，分别立卷，重罪在前，轻罪在后，同等罪的以时间先后排列。</p>
+                <p class="text-indent-2">对同一被害人、证人的询问笔录按照时间顺序排列，询问通知书排在当次询问笔录之前。</p>
+                <p class="text-indent-2"><strong>（三）补充侦查工作卷立卷规范</strong></p>
+                <p class="text-indent-2">对于人民检察院退回补充侦查的案件，在补充侦查完毕后，另装订补充侦查工作卷，连同原案卷一并移送审查起诉。</p>
+                <p class="text-indent-2">补充侦查工作卷按照下列顺序立卷：</p>
+                <p class="text-indent-2">卷内目录；</p>
+                <p class="text-indent-2">换押证；</p>
+                <p class="text-indent-2">退回补充侦查决定书、补充侦查事项或提纲；</p>
+                <p class="text-indent-2">补充侦查报告书;</p>
+                <p class="text-indent-2">补充侦查阶段强制措施文书;</p>
+                <p class="text-indent-2">侦查措施文书及证据材料、照片（排放顺序按照证据材料卷执行）;</p>
+                <p class="text-indent-2">补充侦查卷也可以按照检察机关补充侦查提纲所列事项的顺序进行排列。补查提纲所列事项较多的，可以先分类合并，再将补查材料对应排列。</p>
+            </div>
+        </div>
+    </div>
+
     <div class="statute-card" id="statute-proc127">
         <div class="meta">
             <h4 class="statute-title">《公安机关办理刑事案件程序规定》（公安部令第127号）</h4>
@@ -627,6 +810,61 @@ var _hmt = _hmt || [];
 
     <h3>四、关联法院法规</h3>
 
+    <div class="statute-card" id="statute-criminal-procedure-2021">
+        <div class="meta">
+            <h4 class="statute-title">《最高人民法院关于适用〈中华人民共和国刑事诉讼法〉的解释》（法释〔2021〕1 号）</h4>
+            <div class="statute-controls">
+                <button class="toggle-law-btn" data-target="statute-criminal-procedure-2021-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
+                <a class="official-link" href="https://www.court.gov.cn/fabu/xiangqing/286491.html" target="_blank" rel="noopener">官方原文</a>
+            </div>
+        </div>
+        <div id="statute-criminal-procedure-2021-body" class="law-content collapse-hidden">
+            <div class="highlight-box">
+                <p class="text-indent-2"><strong>第三百八十条</strong> 上诉、抗诉必须在法定期限内提出。不服判决的上诉、抗诉的期限为十日；不服裁定的上诉、抗诉的期限为五日。上诉、抗诉的期限，从接到判决书、裁定书的第二日起计算。</p>
+                <p class="text-indent-2">对附带民事判决、裁定的上诉、抗诉期限，应当按照刑事部分的上诉、抗诉期限确定。附带民事部分另行审判的，上诉期限也应当按照刑事诉讼法规定的期限确定。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="statute-card" id="statute-criminal-procedure-2012">
+        <div class="meta">
+            <h4 class="statute-title">《最高人民法院关于适用〈中华人民共和国刑事诉讼法〉的解释》（法释〔2012〕21 号）</h4>
+            <div class="statute-controls">
+                <button class="toggle-law-btn" data-target="statute-criminal-procedure-2012-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
+                <a class="official-link" href="https://www.court.gov.cn/fabu/xiangqing/4937.html" target="_blank" rel="noopener">官方原文</a>
+            </div>
+        </div>
+        <div id="statute-criminal-procedure-2012-body" class="law-content collapse-hidden">
+            <div class="highlight-box">
+                <p class="text-indent-2"><strong>第三百零一条</strong> 上诉、抗诉必须在法定期限内提出。不服判决的上诉、抗诉的期限为十日；不服裁定的上诉、抗诉的期限为五日。上诉、抗诉的期限，从接到判决书、裁定书的第二日起计算。</p>
+                <p class="text-indent-2">对附带民事判决、裁定的上诉、抗诉期限，应当按照刑事部分的上诉、抗诉期限确定。附带民事部分另行审判的，上诉期限也应当按照刑事诉讼法规定的期限确定。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="statute-card" id="statute-execution-period">
+        <div class="meta">
+            <h4 class="statute-title">《最高人民法院关于严格执行案件审理期限制度的若干规定》（法释〔2000〕29 号）</h4>
+            <div class="statute-controls">
+                <button class="toggle-law-btn" data-target="statute-execution-period-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
+                <a class="official-link" href="http://gongbao.court.gov.cn/Details/d2f01680b5d9f12aed58fc6b94c5da.html" target="_blank" rel="noopener">官方原文</a>
+            </div>
+        </div>
+        <div id="statute-execution-period-body" class="law-content collapse-hidden">
+            <div class="highlight-box">
+                <p class="text-indent-2"><strong>第六条</strong> 第一审人民法院收到起诉书（状）或者执行申请书后，经审查认为符合受理条件的应当在七日内立案；收到自诉人自诉状或者口头告诉的，经审查认为符合自诉案件受理条件的应当在十五日内立案。</p>
+                <p class="text-indent-2">改变管辖的刑事、民事、行政案件，应当在收到案卷材料后的三日内立案。</p>
+                <p class="text-indent-2">第二审人民法院应当在收到第一审人民法院移送的上（抗）诉材料及案卷材料后的五日内立案。</p>
+                <p class="text-indent-2">发回重审或指令再审的案件，应当在收到发回重审或指令再审裁定及案卷材料后的次日内立案。</p>
+                <p class="text-indent-2">按照审判监督程序重新审判的案件，应当在作出提审、再审裁定（决定）的次日立案。</p>
+                <p class="text-indent-2"><strong>第七条</strong> 立案机构应当在决定立案的三日内将案卷材料移送审判庭。</p>
+                <p class="text-indent-2"><strong>第十五条</strong> 被告人、自诉人、附带民事诉讼的原告人和被告人通过第一审人民法院提出上诉的刑事案件，第一审人民法院应当在上诉期限届满后三日内将上诉状连同案卷、证据移送第二审人民法院。被告人、自诉人、附带民事诉讼的原告人和被告人直接向上级人民法院提出上诉的刑事案件，第一审人民法院应当在接到第二审人民法院移交的上诉状后三日内将案卷、证据移送上一级人民法院。</p>
+                <p class="text-indent-2"><strong>第二十三条</strong> 审判人员故意拖延办案，或者因过失延误办案，造成严重后果的，依照《人民法院审判纪律处分办法（试行）》第五十九条的规定予以处分。</p>
+            </div>
+        </div>
+    </div>
+
+
     <div class="statute-card" id="statute-spc-264">
         <div class="meta">
             <h4 class="statute-title">《最高人民法院关于全面推进人民法院电子卷宗随案同步生成和深度应用的指导意见》（法〔2016〕264号）</h4>
@@ -664,7 +902,7 @@ var _hmt = _hmt || [];
 
     <div class="statute-card" id="statute-spc-283">
         <div class="meta">
-            <h4 class="statute-title">《最高人民法院、国家档案局关于印发<人民法院诉讼档案管理办法>和<人民法院电子诉讼档案管理暂行办法>的通知》（法〔2013〕283号）</h4>
+            <h4 class="statute-title">《最高人民法院、国家档案局关于印发&lt;人民法院诉讼档案管理办法&gt;和&lt;人民法院电子诉讼档案管理暂行办法&gt;的通知》（法〔2013〕283号）</h4>
             <div class="statute-controls">
                 <button class="toggle-law-btn" data-target="statute-spc-283-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
                 <a class="official-link" href="https://www.faxin.cn/lib/Zyfl/ZylfSimple.aspx?gid=A289188&libid=all" target="_blank" rel="noopener">官方原文</a>
@@ -677,7 +915,60 @@ var _hmt = _hmt || [];
             </div>
         </div>
     </div>
+<div class="statute-card" id="statute-faob2005415">
+    <div class="meta">
+        <h4 class="statute-title">《最高人民法院办公厅关于案件当事人及其代理人查阅诉讼档案有关问题的复函》（法办〔2005〕415号）</h4>
+        <div class="statute-controls">
+            <button class="toggle-law-btn" data-target="statute-faob2005415-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
+            <a class="official-link" href="https://www.court.gov.cn/zixun-xiangqing-27896.html" target="_blank" rel="noopener">官方原文</a>
+        </div>
+    </div>
+    <div id="statute-faob2005415-body" class="law-content collapse-hidden">
+        <div class="highlight-box">
+            <p class="text-indent-2"><strong>制定机关：</strong>最高人民法院</p>
+            <p class="text-indent-2"><strong>文号：</strong>法办〔2005〕415号</p>
+            <p class="text-indent-2"><strong>公布日期：</strong>2005年9月15日</p>
+            <p class="text-indent-2"><strong>施行日期：</strong>2005年9月15日</p>
+            <p class="text-indent-2"><strong>时效性：</strong>现行有效</p>
+            <p class="text-indent-2"><strong>效力等级：</strong>司法指导性文件</p>
+            <p class="text-indent-2"><strong>主题分类：</strong>档案管理</p>
+            <p class="text-indent-2"><strong>最高人民法院办公厅关于案件当事人及其代理人查阅诉讼档案有关问题的复函</strong></p>
+            <p class="text-indent-2">（2005年9月15日　法办〔2005〕415号）</p>
+            <p class="text-indent-2">湖北省高级人民法院：</p>
+            <p class="text-indent-2">你院《关于案件当事人及其代理人查阅诉讼档案有关问题的请示》（鄂高法〔2005〕260号）收悉。</p>
+            <p class="text-indent-2">经研究，我们认为，按照《人民法院档案管理办法》和《最高人民法院关于诉讼代理人查阅民事案件材料的规定》（法释[2002] 39号）的规定，当事人也可以查阅刑事案件、行政案件和国家赔偿案件的正卷。</p>
+            <p class="text-indent-2">此复。</p>
+        </div>
+    </div>
+</div>
 
+<div class="statute-card" id="statute-faob2006110">
+    <div class="meta">
+        <h4 class="statute-title">《最高人民法院办公厅关于诉讼档案查阅范围的复函》（法办〔2005〕110号）</h4>
+        <div class="statute-controls">
+            <button class="toggle-law-btn" data-target="statute-faob2006110-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
+            <a class="official-link" href="https://www.court.gov.cn/zixun-xiangqing-27897.html" target="_blank" rel="noopener">官方原文</a>
+        </div>
+    </div>
+    <div id="statute-faob2006110-body" class="law-content collapse-hidden">
+        <div class="highlight-box">
+            <p class="text-indent-2"><strong>制定机关：</strong>最高人民法院</p>
+            <p class="text-indent-2"><strong>文号：</strong>法办〔2005〕110号</p>
+            <p class="text-indent-2"><strong>公布日期：</strong>2006年4月17日</p>
+            <p class="text-indent-2"><strong>施行日期：</strong>2006年4月17日</p>
+            <p class="text-indent-2"><strong>时效性：</strong>现行有效</p>
+            <p class="text-indent-2"><strong>效力等级：</strong>司法指导性文件</p>
+            <p class="text-indent-2"><strong>主题分类：</strong>档案管理</p>
+            <p class="text-indent-2"><strong>最高人民法院办公厅关于诉讼档案查阅范围的复函</strong></p>
+            <p class="text-indent-2">（2006年4月17日　法办〔2005〕110号）</p>
+            <p class="text-indent-2">上海市高级人民法院办公室：</p>
+            <p class="text-indent-2">你院《关于扩大诉讼档案查阅范围的请示》（沪高法办〔2006〕 7号）收悉。</p>
+            <p class="text-indent-2">关于诉讼档案查阅范围的问题，我们已在2005年答复湖北省高级人民法院的《关于案件当事人及其代理人查阅诉讼档案有关问题的复函》 （法办〔2005〕 415号）中作了规定，现将该《复函》转发给你们，请遵照执行。关于执行案件的正卷，经研究，我们认为，当事人及其代理人也可以查阅。</p>
+            <p class="text-indent-2">此复。</p>
+            <p class="text-indent-2">最高人民法院办公厅关于案件当事人及其代理人查阅诉讼档案有关问题的复函（略）</p>
+        </div>
+    </div>
+</div>
     <div class="statute-card" id="statute-spc-docspec">
         <div class="meta">
             <h4 class="statute-title">《人民法院诉讼文书材料立卷规范》（法〔2013〕283号）</h4>
@@ -739,7 +1030,228 @@ var _hmt = _hmt || [];
         </div>
         <div id="statute-case-number-2016-27-body" class="law-content collapse-hidden">
             <div class="highlight-box">
-                <p class="text-indent-2">一、同一案件的案号具有唯一性，各级法院应规范案号在案件裁判文书上的使用。对同一案件出现的多个同类裁判文书，首份裁判文书直接使用案号，第二份开始可在案号后缀“之一”“之二”…，以示区别。</p>
+                <p class="text-indent-2">一、同一案件的案号具有唯一性，各级法院应规范案号在案件裁判文书上的使用。对同一案件出现的多个同类裁判文书，首份裁判文书直接使用案号，第二份开始可在案号后缀"之一""之二"…，以示区别。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="statute-card" id="statute-audio-video-recording">
+        <div class="meta">
+            <h4 class="statute-title">《最高人民法院关于人民法院庭审录音录像的若干规定》（法释〔2017〕5号）</h4>
+            <div class="statute-controls">
+                <button class="toggle-law-btn" data-target="statute-audio-video-recording-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
+                <a class="official-link" href="https://www.court.gov.cn/fabu/xiangqing/36562.html?_refluxos=a10" target="_blank" rel="noopener">官方原文</a>
+            </div>
+        </div>
+        <div id="statute-audio-video-recording-body" class="law-content collapse-hidden">
+            <div class="highlight-box">
+                <p class="text-indent-2"><strong>第三条</strong> 庭审录音录像应当自宣布开庭时开始，至闭庭时结束。除下列情形外，庭审录音录像不得人为中断：</p>
+                <p class="text-indent-2">（一）休庭；</p>
+                <p class="text-indent-2">（二）公开庭审中的不公开举证、质证活动；</p>
+                <p class="text-indent-2">（三）不宜录制的调解活动。</p>
+                <p class="text-indent-2">负责录音录像的人员应当对录音录像的起止时间、有无中断等情况进行记录并附卷。</p>
+                <p class="text-indent-2"><strong>第四条</strong> 人民法院应当采取叠加同步录制时间或者其他措施保证庭审录音录像的真实和完整。</p>
+                <p class="text-indent-2">因设备故障或技术原因导致录音录像不真实、不完整的，负责录音录像的人员应当作出书面说明，经审判长或独任审判员审核签字后附卷。</p>
+                <p class="text-indent-2"><strong>第五条</strong> 人民法院应当使用专门设备在线或离线存储、备份庭审录音录像。因设备故障等原因导致不符合技术标准的录音录像，应当一并存储。</p>
+                <p class="text-indent-2">庭审录音录像的归档，按照人民法院电子诉讼档案管理规定执行。</p>
+                <p class="text-indent-2"><strong>第十条</strong> 人民法院应当通过审判流程信息公开平台、诉讼服务平台以及其他便民诉讼服务平台，为当事人、辩护律师、诉讼代理人等依法查阅庭审录音录像提供便利。</p>
+                <p class="text-indent-2">对提供查阅的录音录像，人民法院应当设置必要的安全防范措施。</p>
+                <p class="text-indent-2"><strong>第十一条</strong> 当事人、辩护律师、诉讼代理人等可以依照规定复制录音或者誊录庭审录音录像，必要时人民法院应当配备相应设施。</p>
+                <p class="text-indent-2"><strong>第十二条</strong> 人民法院可以播放依法公开审理案件的庭审录音录像。</p>
+                <p class="text-indent-2"><strong>第十五条</strong> 未经人民法院许可，任何人不得对庭审活动进行录音录像，不得对庭审录音录像进行拍录、复制、删除和迁移。</p>
+                <p class="text-indent-2"><strong>第十六条</strong> 涉及国家秘密、商业秘密、个人隐私等庭审活动的录制，以及对庭审录音录像的存储、查阅、复制、誊录等，应当符合保密管理等相关规定。</p>
+                <p class="text-indent-2"><strong>第十八条</strong> 人民法院从事其他审判活动或者进行执行、听证、接访等活动需要进行录音录像的，参照本规定执行。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="statute-card" id="statute-trial-process-info">
+        <div class="meta">
+            <h4 class="statute-title">《最高人民法院关于人民法院通过互联网公开审判流程信息的规定》（法释〔2018〕7号）</h4>
+            <div class="statute-controls">
+                <button class="toggle-law-btn" data-target="statute-trial-process-info-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
+                <a class="official-link" href="https://www.court.gov.cn/fabu/xiangqing/85532.html?_refluxos=a10" target="_blank" rel="noopener">官方原文</a>
+            </div>
+        </div>
+        <div id="statute-trial-process-info-body" class="law-content collapse-hidden">
+            <div class="highlight-box">
+                <p class="text-indent-2"><strong>第一条</strong> 人民法院审判刑事、民事、行政、国家赔偿案件的流程信息，应当通过互联网向参加诉讼的当事人及其法定代理人、诉讼代理人、辩护人公开。</p>
+                <p class="text-indent-2">人民法院审判具有重大社会影响案件的流程信息，可以通过互联网或者其他方式向公众公开。</p>
+                <p class="text-indent-2"><strong>第二条</strong> 人民法院通过互联网公开审判流程信息，应当依法、规范、及时、便民。</p>
+                <p class="text-indent-2"><strong>第三条</strong> 中国审判流程信息公开网是人民法院公开审判流程信息的统一平台。各级人民法院在本院门户网站以及司法公开平台设置中国审判流程信息公开网的链接。</p>
+                <p class="text-indent-2">有条件的人民法院可以通过手机、诉讼服务平台、电话语音系统、电子邮箱等辅助媒介，向当事人及其法定代理人、诉讼代理人、辩护人主动推送案件的审判流程信息，或者提供查询服务。</p>
+                <p class="text-indent-2"><strong>第四条</strong> 人民法院应当在受理案件通知书、应诉通知书、参加诉讼通知书、出庭通知书中，告知当事人及其法定代理人、诉讼代理人、辩护人通过互联网获取审判流程信息的方法和注意事项。</p>
+                <p class="text-indent-2"><strong>第五条</strong> 当事人、法定代理人、诉讼代理人、辩护人的身份证件号码、律师执业证号、组织机构代码、统一社会信用代码，是其获取审判流程信息的身份验证依据。</p>
+                <p class="text-indent-2">当事人及其法定代理人、诉讼代理人、辩护人应当配合受理案件的人民法院采集、核对身份信息，并预留有效的手机号码。</p>
+                <p class="text-indent-2"><strong>第六条</strong> 人民法院通知当事人应诉、参加诉讼，准许当事人参加诉讼，或者采用公告方式送达当事人的，自完成其身份信息采集、核对后，依照本规定公开审判流程信息。</p>
+                <p class="text-indent-2">当事人中途退出诉讼的，经人民法院依法确认后，不再向该当事人及其法定代理人、诉讼代理人、辩护人公开审判流程信息。</p>
+                <p class="text-indent-2">法定代理人、诉讼代理人、辩护人参加诉讼或者发生变更的，参照前两款规定处理。</p>
+                <p class="text-indent-2"><strong>第七条</strong> 下列程序性信息应当通过互联网向当事人及其法定代理人、诉讼代理人、辩护人公开：</p>
+                <p class="text-indent-2">（一）收案、立案信息，结案信息；</p>
+                <p class="text-indent-2">（二）检察机关、刑罚执行机关信息，当事人信息；</p>
+                <p class="text-indent-2">（三）审判组织信息；</p>
+                <p class="text-indent-2">（四）审判程序、审理期限、送达、上诉、抗诉、移送等信息；</p>
+                <p class="text-indent-2">（五）庭审、质证、证据交换、庭前会议、询问、宣判等诉讼活动的时间和地点；</p>
+                <p class="text-indent-2">（六）裁判文书在中国裁判文书网的公布情况；</p>
+                <p class="text-indent-2">（七）法律、司法解释规定应当公开，或者人民法院认为可以公开的其他程序性信息。</p>
+                <p class="text-indent-2"><strong>第八条</strong> 回避、管辖争议、保全、先予执行、评估、鉴定等流程信息，应当通过互联网向当事人及其法定代理人、诉讼代理人、辩护人公开。</p>
+                <p class="text-indent-2">公开保全、先予执行等流程信息可能影响事项处理的，可以在事项处理完毕后公开。</p>
+                <p class="text-indent-2"><strong>第九条</strong> 下列诉讼文书应当于送达后通过互联网向当事人及其法定代理人、诉讼代理人、辩护人公开：</p>
+                <p class="text-indent-2">（一）起诉状、上诉状、再审申请书、申诉书、国家赔偿申请书、答辩状等诉讼文书；</p>
+                <p class="text-indent-2">（二）受理案件通知书、应诉通知书、参加诉讼通知书、出庭通知书、合议庭组成人员通知书、传票等诉讼文书；</p>
+                <p class="text-indent-2">（三）判决书、裁定书、决定书、调解书，以及其他有中止、终结诉讼程序作用，或者对当事人实体权利有影响、对当事人程序权利有重大影响的裁判文书；</p>
+                <p class="text-indent-2">（四）法律、司法解释规定应当公开，或者人民法院认为可以公开的其他诉讼文书。</p>
+                <p class="text-indent-2"><strong>第十条</strong> 庭审、质证、证据交换、庭前会议、调查取证、勘验、询问、宣判等诉讼活动的笔录，应当通过互联网向当事人及其法定代理人、诉讼代理人、辩护人公开。</p>
+                <p class="text-indent-2"><strong>第十一条</strong> 当事人及其法定代理人、诉讼代理人、辩护人申请查阅庭审录音录像、电子卷宗的，人民法院可以通过中国审判流程信息公开网或者其他诉讼服务平台提供查阅，并设置必要的安全保护措施。</p>
+                <p class="text-indent-2"><strong>第十二条</strong> 涉及国家秘密，以及法律、司法解释规定应当保密或者限制获取的审判流程信息，不得通过互联网向当事人及其法定代理人、诉讼代理人、辩护人公开。</p>
+                <p class="text-indent-2"><strong>第十三条</strong> 已经公开的审判流程信息与实际情况不一致的，以实际情况为准，受理案件的人民法院应当及时更正。</p>
+                <p class="text-indent-2">已经公开的审判流程信息存在本规定第十二条列明情形的，受理案件的人民法院应当及时撤回。</p>
+                <p class="text-indent-2"><strong>第十四条</strong> 经受送达人书面同意，人民法院可以通过中国审判流程信息公开网向民事、行政案件的当事人及其法定代理人、诉讼代理人电子送达除判决书、裁定书、调解书以外的诉讼文书。</p>
+                <p class="text-indent-2">采用前款方式送达的，人民法院应当按照本规定第五条采集、核对受送达人的身份信息，并为其开设个人专用的即时收悉系统。诉讼文书到达该系统的日期为送达日期，由系统自动记录并生成送达回证归入电子卷宗。</p>
+                <p class="text-indent-2">已经送达的诉讼文书需要更正的，应当重新送达。</p>
+                <p class="text-indent-2"><strong>第十五条</strong> 最高人民法院监督指导全国法院审判流程信息公开工作。高级、中级人民法院监督指导辖区法院审判流程信息公开工作。</p>
+                <p class="text-indent-2">各级人民法院审判管理办公室或者承担审判管理职能的其他机构负责本院审判流程信息公开工作，履行以下职责：</p>
+                <p class="text-indent-2">（一）组织、监督审判流程信息公开工作；</p>
+                <p class="text-indent-2">（二）处理当事人及其法定代理人、诉讼代理人、辩护人对审判流程信息公开工作的投诉和意见建议；</p>
+                <p class="text-indent-2">（三）指导技术部门做好技术支持和服务保障；</p>
+                <p class="text-indent-2">（四）其他管理工作。</p>
+                <p class="text-indent-2"><strong>第十六条</strong> 公开审判流程信息的业务规范和技术标准，由最高人民法院另行制定。</p>
+                <p class="text-indent-2"><strong>第十七条</strong> 本规定自2018年9月1日起施行。最高人民法院以前发布的司法解释和规范性文件与本规定不一致的，以本规定为准。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="statute-card" id="statute-six-provisions">
+        <div class="meta">
+            <h4 class="statute-title">《最高人民法院印发&lt;关于司法公开的六项规定&gt;和&lt;关于人民法院接受新闻媒体舆论监督的若干规定&gt;的通知》（法发〔2009〕58号）</h4>
+            <div class="statute-controls">
+                <button class="toggle-law-btn" data-target="statute-six-provisions-body" aria-expanded="false"><i class="fa fa-chevron-down"></i><span>展开</span></button>
+                <a class="official-link" href="https://www.court.gov.cn/fabu/xiangqing/613.html" target="_blank" rel="noopener">官方原文</a>
+            </div>
+        </div>
+        <div id="statute-six-provisions-body" class="law-content collapse-hidden">
+            <div class="highlight-box">
+                <p class="text-indent-2"><strong>一、立案公开</strong></p>
+                <p class="text-indent-2">立案阶段的相关信息应当通过便捷、有效的方式向当事人公开。各类案件的立案条件、立案流程、法律文书样式、诉讼费用标准、缓减免交诉讼费程序、当事人重要权利义务、诉讼和执行风险提示以及可选择的诉讼外纠纷解决方式等内容，应当通过适当的形式向社会和当事人公开。人民法院应当及时将案件受理情况通知当事人。对于不予受理的，应当将不予受理裁定书、不予受理再审申请通知书、驳回再审申请裁定书等相关法律文件依法及时送达当事人，并说明理由，告知当事人诉讼权利。</p>
+            </div>
+        </div>
+    </div>
+
+    <h3>五、关联机关快速通道</h3>
+
+    <div class="statute-card">
+        <div class="meta">
+            <h4 class="statute-title">公安部</h4>
+            <div class="statute-controls">
+                <a class="official-link" href="https://www.mps.gov.cn/" target="_blank" rel="noopener">访问网站</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="statute-card">
+        <div class="meta">
+            <h4 class="statute-title">贵阳市公安局</h4>
+            <div class="statute-controls">
+                <a class="official-link" href="https://gaj.guiyang.gov.cn/" target="_blank" rel="noopener">访问网站</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="statute-card">
+        <div class="meta">
+            <h4 class="statute-title">贵阳市公安局云岩分局</h4>
+            <div class="statute-controls">
+                <a class="official-link" href="https://gaj.guiyang.gov.cn/zfxxgk/fdzdgklm/jgjj/zsjg/yyfj_5946957/" target="_blank" rel="noopener">访问网站</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="statute-card">
+        <div class="meta">
+            <h4 class="statute-title">最高人民检察院</h4>
+            <div class="statute-controls">
+                <a class="official-link" href="https://www.spp.gov.cn/" target="_blank" rel="noopener">访问网站</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="statute-card">
+        <div class="meta">
+            <h4 class="statute-title">贵阳市人民检察院</h4>
+            <div class="statute-controls">
+                <a class="official-link" href="http://www.guiyang.jcy.gov.cn/" target="_blank" rel="noopener">访问网站</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="statute-card">
+        <div class="meta">
+            <h4 class="statute-title">贵阳市云岩区人民检察院</h4>
+            <div class="statute-controls">
+                <a class="official-link" href="https://www.guiyangyy.jcy.gov.cn/" target="_blank" rel="noopener">访问网站</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="statute-card">
+        <div class="meta">
+            <h4 class="statute-title">最高人民法院</h4>
+            <div class="statute-controls">
+                <a class="official-link" href="https://www.court.gov.cn/index.html" target="_blank" rel="noopener">访问网站</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="statute-card">
+        <div class="meta">
+            <h4 class="statute-title">人民法院在线服务网</h4>
+            <div class="statute-controls">
+                <a class="official-link" href="https://zxfw.court.gov.cn" target="_blank" rel="noopener">访问网站</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="statute-card">
+        <div class="meta">
+            <h4 class="statute-title">人民法院违纪违法举报中心</h4>
+            <div class="statute-controls">
+                <a class="official-link" href="https://jubao.court.gov.cn/home" target="_blank" rel="noopener">访问网站</a>
+            </div>
+        </div>
+    </div>
+  
+    <div class="statute-card">
+        <div class="meta">
+            <h4 class="statute-title">中国裁判文书网</h4>
+            <div class="statute-controls">
+                <a class="official-link" href="https://wenshu.court.gov.cn/" target="_blank" rel="noopener">访问网站</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="statute-card">
+        <div class="meta">
+            <h4 class="statute-title">贵州省高级人民法院</h4>
+            <div class="statute-controls">
+                <a class="official-link" href="https://www.guizhoucourt.gov.cn/" target="_blank" rel="noopener">访问网站</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="statute-card">
+        <div class="meta">
+            <h4 class="statute-title">贵阳市中级人民法院</h4>
+            <div class="statute-controls">
+                <a class="official-link" href="http://gyzy.guizhoucourt.gov.cn/" target="_blank" rel="noopener">访问网站</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="statute-card">
+        <div class="meta">
+            <h4 class="statute-title">贵阳市云岩区人民法院</h4>
+            <div class="statute-controls">
+                <a class="official-link" href="http://yunyan.guizhoucourt.gov.cn/" target="_blank" rel="noopener">访问网站</a>
             </div>
         </div>
     </div>

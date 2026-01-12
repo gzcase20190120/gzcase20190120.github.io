@@ -192,6 +192,18 @@ var _hmt = _hmt || [];
             .nav-menu{ display:none !important; }
         }
     </style>
+    <style>
+        /* Allow long URLs to wrap on small screens and prevent overflow */
+        .declaration, .declaration p, .manual-list, .manual-item {
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            -webkit-hyphens: auto;
+            hyphens: auto;
+        }
+        .manual-item a { white-space: normal; overflow-wrap: anywhere; color: inherit; }
+        /* Smaller monospace for code-like text inside declarations when needed */
+        .declaration code, .declaration .inline-code { font-family: Menlo, Monaco, 'Courier New', monospace; font-size:13px; }
+    </style>
 </head>
 <body>
 <header class="header">
@@ -207,7 +219,7 @@ var _hmt = _hmt || [];
             <ul class="nav-menu" id="navMenu">
                 <li><a class="capsule-btn" href="index.html">网站主页</a></li>
                 <li><a class="capsule-btn" href="statement.html">重要申明</a></li>
-                <li><a class="capsule-btn" href="public.html">公安专栏</a></li>
+                <li><a class="capsule-btn" href="police.html">公安专栏</a></li>
                 <li><a class="capsule-btn" href="procuratorate.html">检察专栏</a></li>
                 <li><a class="capsule-btn" href="court.html">法院专栏</a></li>
                 <li><a class="capsule-btn" href="interview.html">信访专栏</a></li>
@@ -319,9 +331,10 @@ var _hmt = _hmt || [];
             <p class="manual-item">3. 2025年8月27日，站长再次抵达贵州省贵阳市云岩区人民法院档案室，对方先是提供了55张JPG格式的正卷材料，与此前2024年11月5日拷贝完全一致，并且对比2024年11月5日拷贝的材料还少了一张JPG图片。站长因材料无档案室的电子签章无证明效力，要求加电子签章，对方要求再提供一张空白光盘后让站长在大厅等候，过了20分钟后对方告知制作电子签章需一个一个上传花费时间较久，让站长先留下联系方式，制作完毕会电话联系。  </p>
             <p class="manual-item">4. 2025年8月27日下午，站长到达贵州省贵阳市中级人民法院档案室拷贝到一个PDF文件，名为《（2019）黔01刑终669号.pdf》,回来后发现该文件是一个集成的PDF文件，所有法院档案室的电子证明专用章，但是无法确认和核实每个电子材料的具体形成时间，因为从该PDF只能查到形成时间是2019年8月27日，这样每份电子材料的具体形成时间将无法确认，真实性、完整性无法得到保障；</p>
             <p class="manual-item">5. 2025年9月2日，站长前往贵州省贵阳市云岩区人民法院档案室获取加电子证明专用章的光盘，但后来发现为一个集成的PDF文件，名为“（2019）黔0103刑初821号.pdf”,存在的问题依然是确认关键正卷卷宗材料，并且无法确认每个电子卷宗的具体形成时间 ，是否与实际案件办理时间同步形成的问题无法解决；另外站长请求对方提供缺失的正卷材料时，对方以黔高法〔2021〕69号拒绝提供，并提供了一份摘选的2021〕69号部分内容给站长，待站长回来后经多方公开渠道查询该文件，但均无法查到，甚至通过司法部APP寻求律师帮忙也是同样的结果，说明该文件未公开，但档案工作人员以此限制站长的正当查阅权，疑似该摘选内容存在问题，有被篡改以达到限制当事人正当权利行使的不法目的；最后站长在贵州省高级人民法院官网获取该院新闻发言人的联系电话和邮箱，但是电话一直打不通，最终给该邮箱发送了邮件以求核实情况，但一直未获回复；</p>
-            <p class="manual-item">6. 2025年9月13日，站长对所有从一、二法院获取的正卷资料进行了SHA256、SM3哈希值校验并进行了RSA4096GPG签名，同时把签名的GPG公钥上传至https://keyserver.ubuntu.com密钥服务器方便相关方进行验签，接着对涉密或不宜公开材料进行了RSA4096GPG签名并加密，最终于2025年9月13日 10:05:56 完成了提交并推送至github等平台，以便达到上链固化的效果，github的仓库地址为  https://github.com/gzcase20190120/gzcase20190120.github.io </p>
+            <p class="manual-item">6. 2025年9月13日，站长对所有从一、二法院获取的正卷资料进行了SHA256、SM3哈希值校验并进行了RSA4096GPG签名，同时把签名的GPG公钥上传至<a href="https://keyserver.ubuntu.com" target="_blank" rel="noopener">https://keyserver.ubuntu.com</a> 密钥服务器方便相关方进行验签，接着对涉密或不宜公开材料进行了RSA4096GPG签名并加密，最终于2025年9月13日 10:05:56 完成了提交并推送至github等平台，以便达到上链固化的效果，github的仓库地址为 <a class="wrap-link" href="https://github.com/gzcase20190120/gzcase20190120.github.io" target="_blank" rel="noopener">https://github.com/gzcase20190120/gzcase20190120.github.io</a> </p>
             <p class="manual-item">7. 2025年9月18日，站长再次前往贵州省贵阳市云岩区人民法院档案室要求对方提供缺失的正卷材料，并申明需原始材料，对方嘴上答应，但回来后站长发现获取的任然是一个集成的PDF文件，即“（2019）黔0103刑初821号.pdf”,最后站长对该材料进行了SHA256和SM3哈希值校验，发现与之前获取的“（2019）黔0103刑初821号.pdf”完全不符，说明已经被篡改，仔细查阅其内容，新增的材料无补卷标注，无补卷审批文号，所有材料均无骑缝章。</p>
             <p class="manual-item">8. 2025年9月20日，站长前往案发地点调察周边的监控探头方位并拍照记录，以便反驳相关方提供案发经过的视频存在的问题。</p>
+            <p class="manual-item">9. 2025年10月2日，站长登陆人民法院在线服务网（原原人民法院申诉信访平台）发现与自己的关联案件信息能够查阅（此前一致未查到与自己的关联案件信息），深入了解后得知，至2025年9月19日贵州法院系统因并入最高人的全国一张网统一平台而下线，新的人民法院在线服务网于2025年9月22日整合贵州法院系统数据后正式上线，这真是天大的好事一件，以前与站长关联案件的法院对材料的自主可控问题将得彻底根治，阳光司法距咱又越来越近，但对站长案件的问题会起到什么作用，请关注下次动态。</p>
         </div>
 </section>
 </main>

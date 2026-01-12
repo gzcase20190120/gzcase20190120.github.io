@@ -239,13 +239,65 @@ var _hmt = _hmt || [];
             width: 84%;
             word-break: break-word;
         }
+        .float-btn .icon{ position:relative; z-index:2; display:inline-flex; align-items:center; justify-content:center; }
+        .float-btn .mini-label{
+            display:none; /* only show on small screens */
+            position: absolute;
+            right: calc(100% + 10px);
+            top: 50%; transform: translateY(-50%);
+            background: linear-gradient(180deg, rgba(0,0,0,0.88), rgba(10,10,10,0.92));
+            color: #fff; font-weight:800; font-size:13px; padding:8px 10px; border-radius:10px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+            white-space: nowrap; z-index: 4500; pointer-events: none; opacity: 0.98;
+        }
+        /* small arrow to point at the FAB (left-pointing) */
+        .float-btn .mini-label::after{
+            content: '';
+            position: absolute;
+            right: -6px;
+            top: 50%; transform: translateY(-50%);
+            width: 0; height: 0; border-top: 6px solid transparent; border-bottom:6px solid transparent; border-left:6px solid rgba(10,10,10,0.92);
+        }
 
         /* small subtle helper for screen readers and focus */
         .float-btn span.sr-only{ position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
 
-        /* responsive: hide on very small screens, reduce size on tablets */
-        @media (max-width:600px){
-            #floating-actions{ display:none; }
+        /* responsive adjustments
+           - On very small screens, show compact FABs in the bottom-right corner
+             instead of hiding them so users can access key actions on mobile.
+           - On tablets, reduce to a medium size. */
+    @media (max-width:600px){
+            /* move to bottom-right so it doesn't block left-aligned content */
+            #floating-actions{
+                left: auto;
+                right: 12px;
+                top: auto;
+                bottom: calc(60px + 14px); /* place above footer */
+                transform: none;
+                flex-direction: column-reverse;
+                gap: 12px;
+                z-index: 4000;
+                pointer-events: auto;
+            }
+            .float-btn{
+                width: 56px;
+                height: 56px;
+                border-radius: 50%;
+                padding: 0;
+                background: linear-gradient(90deg,#1976d2 0%,#2196f3 100%);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+                transition: transform .14s ease, box-shadow .14s ease;
+                display:inline-flex; align-items:center; justify-content:center;
+            }
+            /* show compact mini-label on mobile for clarity */
+            .float-btn .label{ display:none; }
+            .float-btn .mini-label{ display:block; }
+            /* ensure mini-label won't be clipped when buttons are stacked */
+            #floating-actions{ overflow: visible; }
+            .float-btn .icon svg{ width:22px; height:22px; }
+            .float-btn::before{ left:4px; top:4px; right:4px; bottom:4px; border-width:2px; }
+            .float-btn::after{ left:3px; top:3px; right:3px; bottom:3px; }
+            .float-btn:focus{ transform: translateY(-2px) scale(1.02); box-shadow: 0 14px 40px rgba(0,255,136,0.12); }
         }
         @media (min-width:601px) and (max-width:900px){
             .float-btn{ width:96px; height:96px; }
@@ -289,7 +341,7 @@ var _hmt = _hmt || [];
             <ul class="nav-menu" id="navMenu">
                 <li><a class="capsule-btn" href="index.html">网站主页</a></li>
                 <li><a class="capsule-btn" href="statement.html">重要申明</a></li>
-                <li><a class="capsule-btn" href="public.html">公安专栏</a></li>
+                <li><a class="capsule-btn" href="police.html">公安专栏</a></li>
                 <li><a class="capsule-btn" href="procuratorate.html">检察专栏</a></li>
                 <li><a class="capsule-btn" href="court.html">法院专栏</a></li>
                 <li><a class="capsule-btn" href="interview.html">信访专栏</a></li>
@@ -425,11 +477,29 @@ var _hmt = _hmt || [];
 <!-- Floating action buttons (左侧垂直居中) -->
 <div id="floating-actions" aria-hidden="false">
     <a href="zj002.html" class="float-btn" title="一审阅卷问题清单 - 打开" aria-label="一审阅卷问题清单，打开新页面" id="btn-issues">
+        <!-- icon (list) -->
+        <span class="icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="2" rx="1" fill="#ffffff" opacity="0.95"/>
+                <rect x="3" y="11" width="18" height="2" rx="1" fill="#ffffff" opacity="0.9"/>
+                <rect x="3" y="17" width="12" height="2" rx="1" fill="#ffffff" opacity="0.85"/>
+            </svg>
+        </span>
         <span class="label">一审阅卷问题清单</span>
+        <span class="mini-label">问题清单</span>
         <span class="sr-only">打开一审阅卷问题清单页面</span>
     </a>
     <a href="zj001_贵阳市云岩区人民法院档案室出具的卷宗资料校验值——SHA256&SM3哈希结果.csv" class="float-btn" title="一审卷宗校验值下载 - 下载CSV" aria-label="一审卷宗校验值下载，下载CSV文件" id="btn-hash">
+        <!-- icon (download) -->
+        <span class="icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">
+                <path d="M12 3v10" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8 9l4 4 4-4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="3" y="17" width="18" height="3" rx="1" fill="#ffffff" opacity="0.14"/>
+            </svg>
+        </span>
         <span class="label">一审卷宗校验值下载</span>
+        <span class="mini-label">下载校验值</span>
         <span class="sr-only">下载一审卷宗校验值 CSV 文件</span>
     </a>
 </div>
