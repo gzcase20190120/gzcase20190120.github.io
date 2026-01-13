@@ -1,0 +1,3 @@
+git remote set-url --delete origin git@github-gzcase20190120:gzcase20190120/gzcase20190120.github.io.git
+git remote set-url origin git@gitcode-gzcase20190120:gzcase20190120/case20190120.git
+git remote set-url --add origin git@github-gzcase20190120:gzcase20190120/gzcase20190120.github.io.git
